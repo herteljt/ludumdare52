@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="ImageTexture" id=1]
+
+[node name="Background" type="TextureRect"]
+margin_right = 567.0
+margin_bottom = 481.0
+texture = SubResource( 1 )
