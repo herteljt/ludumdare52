@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-resource_version = 41
+resource_version = 42
 syntax_version = 2
 raw_text = "~ tutorial_start_node
 Trainer: Ok, next. Who are you, then?
@@ -17,12 +17,12 @@ Player:
 Trainer: Yes, those are your only choices. They’ll matter later, I promise. And you are NOT Death. We’d have to pay you overtime if you were Death. You’re a Non-living Contractor, and NLC. You’re only one of many, and you CAN be replaced.
 
 Player:
-- How did you know what I was going to say?
-	Trainer: I didn’t, I only knew the outcomes.
-- Can you read minds?
-	Trainer: Yes.
-- You are going to ignore whatever I say, aren’t you?
-	Trainer: No.
+- Nope!
+	Trainer: Fine, I’ll make it easy, pick up, make them talk to you about bad stuff they did, then drop them in the Styx.
+- Yes!
+	Trainer: Amazing. Someone with half a brain left rattling around in that bone box.
+- examples, please!
+	Trainer: I’m getting to that!
 
 Trainer: Anyway, I am here to teach you how to do your job. I know what you’re thinking, right? Why does a self directed app based business need someone to train every single user? And to that I say, shut up. First off, choose a file.
 
@@ -118,8 +118,8 @@ lines = {
 "next_id_after": "18",
 "replacements": [  ],
 "responses": PoolStringArray( "11", "13", "15" ),
-"text": "How did you know what I was going to say?",
-"translation_key": "How did you know what I was going to say?",
+"text": "Nope!",
+"translation_key": "Nope!",
 "type": "response"
 },
 "12": {
@@ -128,16 +128,16 @@ lines = {
 "next_id": "18",
 "parent_id": "11",
 "replacements": [  ],
-"text": "I didn’t, I only knew the outcomes.",
-"translation_key": "I didn’t, I only knew the outcomes.",
+"text": "Fine, I’ll make it easy, pick up, make them talk to you about bad stuff they did, then drop them in the Styx.",
+"translation_key": "Fine, I’ll make it easy, pick up, make them talk to you about bad stuff they did, then drop them in the Styx.",
 "type": "dialogue"
 },
 "13": {
 "next_id": "14",
 "next_id_after": "18",
 "replacements": [  ],
-"text": "Can you read minds?",
-"translation_key": "Can you read minds?",
+"text": "Yes!",
+"translation_key": "Yes!",
 "type": "response"
 },
 "14": {
@@ -146,16 +146,16 @@ lines = {
 "next_id": "18",
 "parent_id": "13",
 "replacements": [  ],
-"text": "Yes.",
-"translation_key": "Yes.",
+"text": "Amazing. Someone with half a brain left rattling around in that bone box.",
+"translation_key": "Amazing. Someone with half a brain left rattling around in that bone box.",
 "type": "dialogue"
 },
 "15": {
 "next_id": "16",
 "next_id_after": "18",
 "replacements": [  ],
-"text": "You are going to ignore whatever I say, aren’t you?",
-"translation_key": "You are going to ignore whatever I say, aren’t you?",
+"text": "examples, please!",
+"translation_key": "examples, please!",
 "type": "response"
 },
 "16": {
@@ -164,8 +164,8 @@ lines = {
 "next_id": "18",
 "parent_id": "15",
 "replacements": [  ],
-"text": "No.",
-"translation_key": "No.",
+"text": "I’m getting to that!",
+"translation_key": "I’m getting to that!",
 "type": "dialogue"
 },
 "18": {

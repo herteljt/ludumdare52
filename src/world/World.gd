@@ -7,6 +7,28 @@ onready var scene_vars = get_node("/root/GameState")
 # var a = 2
 # var b = "text"
 
+#func new_game():
+#	score = 0
+#	$HUD.update_score(score)
+#
+#	get_tree().call_group("mobs", "queue_free")
+#	$Player.start($StartPosition.position)
+#	$StartTimer.start()
+#
+#	$HUD.show_message("Get ready...")
+#
+#	yield($StartTimer,"timeout")
+#	$ScoreTimer.start()
+#	$MobTimer.start()
+#	$Music.play()
+#
+#func game_over():
+#	$ScoreTimer.stop()
+#	$MobTimer.stop()
+#	$HUD.show_game_over()
+#	$Music.stop()
+#	$DeathSound.play()
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
