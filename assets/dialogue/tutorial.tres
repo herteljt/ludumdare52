@@ -1,0 +1,650 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+resource_version = 41
+syntax_version = 2
+raw_text = "~ tutorial_start_node
+Trainer: Ok, next. Who are you, then?
+
+Player: 
+- It’s me, Death!
+- I’m Death, bub!
+- Are these really my only choices?
+
+Trainer: Yes, those are your only choices. They’ll matter later, I promise. And you are NOT Death. We’d have to pay you overtime if you were Death. You’re a Non-living Contractor, and NLC. You’re only one of many, and you CAN be replaced.
+
+Player:
+- How did you know what I was going to say?
+	Trainer: I didn’t, I only knew the outcomes.
+- Can you read minds?
+	Trainer: Yes.
+- You are going to ignore whatever I say, aren’t you?
+	Trainer: No.
+
+Trainer: Anyway, I am here to teach you how to do your job. I know what you’re thinking, right? Why does a self directed app based business need someone to train every single user? And to that I say, shut up. First off, choose a file.
+
+set dossier_scene = true
+#Two options show up they are both:
+
+#Image: Blandest person ever
+#Dossier: Jane Doe
+
+Trainer: Jane was a retail sales employee. She hated Mondays. Her 1.94 children loved playing and fun. She died by a heart attack at 77.28 years old.
+set character = 2
+
+Trainer: Yes, I know they are the same, it’s for demonstration purposes, and good thing too. A person that average would collapse space time.
+
+Player:
+- I’ll choose Jane!
+	Trainer: Sounds good. 
+- Jane’s my choice!
+	Trainer: A rebel, eh?
+- Why are you doing this to me?
+	Trainer: You say you want Jane, eh?
+
+set dossier_scene = false 
+set driving_scene = true 
+
+Trainer:Ok, so now you are gonna go pick her up, and drive her to her ultimate fate. But that’s the easy bit. The hard part is getting them to talk about themselves. The stuff they did. The worse the better. Cause that pushes up their fare, and the higher the fare, the longer they stay in Purgatory and out o’ the bosses’ way. Then you let them out and after a quick dunk in the Styx, they are good to go. We clear?
+
+
+
+~ fare_node
+Reap: The fare tracks how much a soul is worth. 
+Reap: More damning information = more value.
+
+~ tutorial_old_node
+if has_met_player == false
+	Reap: Welcome to [wave amp=25 freq=5]DeadLyft[/wave]!
+	Reap: This tutorial will show you how to play the game.
+	set has_met_player = true
+else
+	Reap: Welcome back!
+Reap: You work as a driver for soulsharing app DeadLyft.
+Reap: You've been tasked with trying to ferry the souls to the everafter.
+Reap: As you drive, you'll engage in conversations with patrons and have to make choices about where to push the conversation.
+- Tell me more.
+	Reap: Of course!
+- End the convesation. => END
+- Start again => tutorial_start_node
+
+Reap: You see, Hell runneth over. So the higher-ups have tasked you with extending the stay of souls in purgatory. 
+Reap: The more information you can harvest from an individual, the longer their stay in purgatory will be.
+Reap: Your task is to get as much information as possible without upsetting a soul too much.
+- So I'm trying to get them to tell me the terrible things they did without realizing it?
+	Reap: Yep, basically.
+- End the convesation. => END
+- Start again => tutorial_start_node
+Reap: As souls tell you their mischief, you'll see the fare increase.
+Reap: You need to make you daily quota of course. We're professionals here.
+Reap: Any questions?
+- Yeah, what you mean by fare? => fare_node
+- End the convesation. => END
+- Start again => tutorial_start_node"
+errors = [  ]
+titles = {
+"fare_node": "47",
+"tutorial_old_node": "51",
+"tutorial_start_node": "1"
+}
+lines = {
+"0": {
+"next_id": "1",
+"text": "tutorial_start_node",
+"type": "title"
+},
+"1": {
+"character": "Trainer",
+"character_replacements": [  ],
+"next_id": "3",
+"replacements": [  ],
+"text": "Ok, next. Who are you, then?",
+"translation_key": "Ok, next. Who are you, then?",
+"type": "dialogue"
+},
+"10": {
+"character": "",
+"next_id": "11",
+"replacements": [  ],
+"text": "Player:",
+"translation_key": "Player:",
+"type": "dialogue"
+},
+"11": {
+"next_id": "12",
+"next_id_after": "18",
+"replacements": [  ],
+"responses": PoolStringArray( "11", "13", "15" ),
+"text": "How did you know what I was going to say?",
+"translation_key": "How did you know what I was going to say?",
+"type": "response"
+},
+"12": {
+"character": "Trainer",
+"character_replacements": [  ],
+"next_id": "18",
+"parent_id": "11",
+"replacements": [  ],
+"text": "I didn’t, I only knew the outcomes.",
+"translation_key": "I didn’t, I only knew the outcomes.",
+"type": "dialogue"
+},
+"13": {
+"next_id": "14",
+"next_id_after": "18",
+"replacements": [  ],
+"text": "Can you read minds?",
+"translation_key": "Can you read minds?",
+"type": "response"
+},
+"14": {
+"character": "Trainer",
+"character_replacements": [  ],
+"next_id": "18",
+"parent_id": "13",
+"replacements": [  ],
+"text": "Yes.",
+"translation_key": "Yes.",
+"type": "dialogue"
+},
+"15": {
+"next_id": "16",
+"next_id_after": "18",
+"replacements": [  ],
+"text": "You are going to ignore whatever I say, aren’t you?",
+"translation_key": "You are going to ignore whatever I say, aren’t you?",
+"type": "response"
+},
+"16": {
+"character": "Trainer",
+"character_replacements": [  ],
+"next_id": "18",
+"parent_id": "15",
+"replacements": [  ],
+"text": "No.",
+"translation_key": "No.",
+"type": "dialogue"
+},
+"18": {
+"character": "Trainer",
+"character_replacements": [  ],
+"next_id": "20",
+"replacements": [  ],
+"text": "Anyway, I am here to teach you how to do your job. I know what you’re thinking, right? Why does a self directed app based business need someone to train every single user? And to that I say, shut up. First off, choose a file.",
+"translation_key": "Anyway, I am here to teach you how to do your job. I know what you’re thinking, right? Why does a self directed app based business need someone to train every single user? And to that I say, shut up. First off, choose a file.",
+"type": "dialogue"
+},
+"20": {
+"mutation": {
+"expression": [ {
+"type": "variable",
+"value": "dossier_scene"
+}, {
+"type": "assignment",
+"value": "="
+}, {
+"type": "bool",
+"value": true
+} ]
+},
+"next_id": "26",
+"type": "mutation"
+},
+"26": {
+"character": "Trainer",
+"character_replacements": [  ],
+"next_id": "27",
+"replacements": [  ],
+"text": "Jane was a retail sales employee. She hated Mondays. Her 1.94 children loved playing and fun. She died by a heart attack at 77.28 years old.",
+"translation_key": "Jane was a retail sales employee. She hated Mondays. Her 1.94 children loved playing and fun. She died by a heart attack at 77.28 years old.",
+"type": "dialogue"
+},
+"27": {
+"mutation": {
+"expression": [ {
+"type": "variable",
+"value": "character"
+}, {
+"type": "assignment",
+"value": "="
+}, {
+"type": "number",
+"value": 2
+} ]
+},
+"next_id": "29",
+"type": "mutation"
+},
+"29": {
+"character": "Trainer",
+"character_replacements": [  ],
+"next_id": "31",
+"replacements": [  ],
+"text": "Yes, I know they are the same, it’s for demonstration purposes, and good thing too. A person that average would collapse space time.",
+"translation_key": "Yes, I know they are the same, it’s for demonstration purposes, and good thing too. A person that average would collapse space time.",
+"type": "dialogue"
+},
+"3": {
+"character": "",
+"next_id": "4",
+"replacements": [  ],
+"text": "Player:",
+"translation_key": "Player:",
+"type": "dialogue"
+},
+"31": {
+"character": "",
+"next_id": "32",
+"replacements": [  ],
+"text": "Player:",
+"translation_key": "Player:",
+"type": "dialogue"
+},
+"32": {
+"next_id": "33",
+"next_id_after": "39",
+"replacements": [  ],
+"responses": PoolStringArray( "32", "34", "36" ),
+"text": "I’ll choose Jane!",
+"translation_key": "I’ll choose Jane!",
+"type": "response"
+},
+"33": {
+"character": "Trainer",
+"character_replacements": [  ],
+"next_id": "39",
+"parent_id": "32",
+"replacements": [  ],
+"text": "Sounds good.",
+"translation_key": "Sounds good.",
+"type": "dialogue"
+},
+"34": {
+"next_id": "35",
+"next_id_after": "39",
+"replacements": [  ],
+"text": "Jane’s my choice!",
+"translation_key": "Jane’s my choice!",
+"type": "response"
+},
+"35": {
+"character": "Trainer",
+"character_replacements": [  ],
+"next_id": "39",
+"parent_id": "34",
+"replacements": [  ],
+"text": "A rebel, eh?",
+"translation_key": "A rebel, eh?",
+"type": "dialogue"
+},
+"36": {
+"next_id": "37",
+"next_id_after": "39",
+"replacements": [  ],
+"text": "Why are you doing this to me?",
+"translation_key": "Why are you doing this to me?",
+"type": "response"
+},
+"37": {
+"character": "Trainer",
+"character_replacements": [  ],
+"next_id": "39",
+"parent_id": "36",
+"replacements": [  ],
+"text": "You say you want Jane, eh?",
+"translation_key": "You say you want Jane, eh?",
+"type": "dialogue"
+},
+"39": {
+"mutation": {
+"expression": [ {
+"type": "variable",
+"value": "dossier_scene"
+}, {
+"type": "assignment",
+"value": "="
+}, {
+"type": "bool",
+"value": false
+} ]
+},
+"next_id": "40",
+"type": "mutation"
+},
+"4": {
+"next_id": "8",
+"next_id_after": "8",
+"replacements": [  ],
+"responses": PoolStringArray( "4", "5", "6" ),
+"text": "It’s me, Death!",
+"translation_key": "It’s me, Death!",
+"type": "response"
+},
+"40": {
+"mutation": {
+"expression": [ {
+"type": "variable",
+"value": "driving_scene"
+}, {
+"type": "assignment",
+"value": "="
+}, {
+"type": "bool",
+"value": true
+} ]
+},
+"next_id": "42",
+"type": "mutation"
+},
+"42": {
+"character": "",
+"next_id": "",
+"replacements": [  ],
+"text": "Trainer:Ok, so now you are gonna go pick her up, and drive her to her ultimate fate. But that’s the easy bit. The hard part is getting them to talk about themselves. The stuff they did. The worse the better. Cause that pushes up their fare, and the higher the fare, the longer they stay in Purgatory and out o’ the bosses’ way. Then you let them out and after a quick dunk in the Styx, they are good to go. We clear?",
+"translation_key": "Trainer:Ok, so now you are gonna go pick her up, and drive her to her ultimate fate. But that’s the easy bit. The hard part is getting them to talk about themselves. The stuff they did. The worse the better. Cause that pushes up their fare, and the higher the fare, the longer they stay in Purgatory and out o’ the bosses’ way. Then you let them out and after a quick dunk in the Styx, they are good to go. We clear?",
+"type": "dialogue"
+},
+"46": {
+"next_id": "47",
+"text": "fare_node",
+"type": "title"
+},
+"47": {
+"character": "Reap",
+"character_replacements": [  ],
+"next_id": "48",
+"replacements": [  ],
+"text": "The fare tracks how much a soul is worth.",
+"translation_key": "The fare tracks how much a soul is worth.",
+"type": "dialogue"
+},
+"48": {
+"character": "Reap",
+"character_replacements": [  ],
+"next_id": "",
+"replacements": [  ],
+"text": "More damning information = more value.",
+"translation_key": "More damning information = more value.",
+"type": "dialogue"
+},
+"5": {
+"next_id": "8",
+"next_id_after": "8",
+"replacements": [  ],
+"text": "I’m Death, bub!",
+"translation_key": "I’m Death, bub!",
+"type": "response"
+},
+"50": {
+"next_id": "51",
+"text": "tutorial_old_node",
+"type": "title"
+},
+"51": {
+"condition": {
+"expression": [ {
+"type": "variable",
+"value": "has_met_player"
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "bool",
+"value": false
+} ]
+},
+"next_conditional_id": "55",
+"next_id": "52",
+"next_id_after": "57",
+"type": "condition"
+},
+"52": {
+"character": "Reap",
+"character_replacements": [  ],
+"next_id": "53",
+"parent_id": "51",
+"replacements": [  ],
+"text": "Welcome to [wave amp=25 freq=5]DeadLyft[/wave]!",
+"translation_key": "Welcome to [wave amp=25 freq=5]DeadLyft[/wave]!",
+"type": "dialogue"
+},
+"53": {
+"character": "Reap",
+"character_replacements": [  ],
+"next_id": "54",
+"parent_id": "51",
+"replacements": [  ],
+"text": "This tutorial will show you how to play the game.",
+"translation_key": "This tutorial will show you how to play the game.",
+"type": "dialogue"
+},
+"54": {
+"mutation": {
+"expression": [ {
+"type": "variable",
+"value": "has_met_player"
+}, {
+"type": "assignment",
+"value": "="
+}, {
+"type": "bool",
+"value": true
+} ]
+},
+"next_id": "57",
+"parent_id": "51",
+"type": "mutation"
+},
+"55": {
+"next_conditional_id": "57",
+"next_id": "56",
+"next_id_after": "57",
+"type": "condition"
+},
+"56": {
+"character": "Reap",
+"character_replacements": [  ],
+"next_id": "57",
+"parent_id": "55",
+"replacements": [  ],
+"text": "Welcome back!",
+"translation_key": "Welcome back!",
+"type": "dialogue"
+},
+"57": {
+"character": "Reap",
+"character_replacements": [  ],
+"next_id": "58",
+"replacements": [  ],
+"text": "You work as a driver for soulsharing app DeadLyft.",
+"translation_key": "You work as a driver for soulsharing app DeadLyft.",
+"type": "dialogue"
+},
+"58": {
+"character": "Reap",
+"character_replacements": [  ],
+"next_id": "59",
+"replacements": [  ],
+"text": "You've been tasked with trying to ferry the souls to the everafter.",
+"translation_key": "You've been tasked with trying to ferry the souls to the everafter.",
+"type": "dialogue"
+},
+"59": {
+"character": "Reap",
+"character_replacements": [  ],
+"next_id": "60",
+"replacements": [  ],
+"text": "As you drive, you'll engage in conversations with patrons and have to make choices about where to push the conversation.",
+"translation_key": "As you drive, you'll engage in conversations with patrons and have to make choices about where to push the conversation.",
+"type": "dialogue"
+},
+"6": {
+"next_id": "8",
+"next_id_after": "8",
+"replacements": [  ],
+"text": "Are these really my only choices?",
+"translation_key": "Are these really my only choices?",
+"type": "response"
+},
+"60": {
+"next_id": "61",
+"next_id_after": "65",
+"replacements": [  ],
+"responses": PoolStringArray( "60", "62", "63" ),
+"text": "Tell me more.",
+"translation_key": "Tell me more.",
+"type": "response"
+},
+"61": {
+"character": "Reap",
+"character_replacements": [  ],
+"next_id": "65",
+"parent_id": "60",
+"replacements": [  ],
+"text": "Of course!",
+"translation_key": "Of course!",
+"type": "dialogue"
+},
+"62": {
+"next_id": "end",
+"next_id_after": "65",
+"replacements": [  ],
+"text": "End the convesation.",
+"translation_key": "End the convesation.",
+"type": "response"
+},
+"63": {
+"next_id": "1",
+"next_id_after": "65",
+"replacements": [  ],
+"text": "Start again",
+"translation_key": "Start again",
+"type": "response"
+},
+"65": {
+"character": "Reap",
+"character_replacements": [  ],
+"next_id": "66",
+"replacements": [  ],
+"text": "You see, Hell runneth over. So the higher-ups have tasked you with extending the stay of souls in purgatory.",
+"translation_key": "You see, Hell runneth over. So the higher-ups have tasked you with extending the stay of souls in purgatory.",
+"type": "dialogue"
+},
+"66": {
+"character": "Reap",
+"character_replacements": [  ],
+"next_id": "67",
+"replacements": [  ],
+"text": "The more information you can harvest from an individual, the longer their stay in purgatory will be.",
+"translation_key": "The more information you can harvest from an individual, the longer their stay in purgatory will be.",
+"type": "dialogue"
+},
+"67": {
+"character": "Reap",
+"character_replacements": [  ],
+"next_id": "68",
+"replacements": [  ],
+"text": "Your task is to get as much information as possible without upsetting a soul too much.",
+"translation_key": "Your task is to get as much information as possible without upsetting a soul too much.",
+"type": "dialogue"
+},
+"68": {
+"next_id": "69",
+"next_id_after": "72",
+"replacements": [  ],
+"responses": PoolStringArray( "68", "70", "71" ),
+"text": "So I'm trying to get them to tell me the terrible things they did without realizing it?",
+"translation_key": "So I'm trying to get them to tell me the terrible things they did without realizing it?",
+"type": "response"
+},
+"69": {
+"character": "Reap",
+"character_replacements": [  ],
+"next_id": "72",
+"parent_id": "68",
+"replacements": [  ],
+"text": "Yep, basically.",
+"translation_key": "Yep, basically.",
+"type": "dialogue"
+},
+"70": {
+"next_id": "end",
+"next_id_after": "72",
+"replacements": [  ],
+"text": "End the convesation.",
+"translation_key": "End the convesation.",
+"type": "response"
+},
+"71": {
+"next_id": "1",
+"next_id_after": "72",
+"replacements": [  ],
+"text": "Start again",
+"translation_key": "Start again",
+"type": "response"
+},
+"72": {
+"character": "Reap",
+"character_replacements": [  ],
+"next_id": "73",
+"replacements": [  ],
+"text": "As souls tell you their mischief, you'll see the fare increase.",
+"translation_key": "As souls tell you their mischief, you'll see the fare increase.",
+"type": "dialogue"
+},
+"73": {
+"character": "Reap",
+"character_replacements": [  ],
+"next_id": "74",
+"replacements": [  ],
+"text": "You need to make you daily quota of course. We're professionals here.",
+"translation_key": "You need to make you daily quota of course. We're professionals here.",
+"type": "dialogue"
+},
+"74": {
+"character": "Reap",
+"character_replacements": [  ],
+"next_id": "75",
+"replacements": [  ],
+"text": "Any questions?",
+"translation_key": "Any questions?",
+"type": "dialogue"
+},
+"75": {
+"next_id": "47",
+"next_id_after": "end!",
+"replacements": [  ],
+"responses": PoolStringArray( "75", "76", "77" ),
+"text": "Yeah, what you mean by fare?",
+"translation_key": "Yeah, what you mean by fare?",
+"type": "response"
+},
+"76": {
+"next_id": "end",
+"next_id_after": "end!",
+"replacements": [  ],
+"text": "End the convesation.",
+"translation_key": "End the convesation.",
+"type": "response"
+},
+"77": {
+"next_id": "1",
+"next_id_after": "end!",
+"replacements": [  ],
+"text": "Start again",
+"translation_key": "Start again",
+"type": "response"
+},
+"8": {
+"character": "Trainer",
+"character_replacements": [  ],
+"next_id": "10",
+"replacements": [  ],
+"text": "Yes, those are your only choices. They’ll matter later, I promise. And you are NOT Death. We’d have to pay you overtime if you were Death. You’re a Non-living Contractor, and NLC. You’re only one of many, and you CAN be replaced.",
+"translation_key": "Yes, those are your only choices. They’ll matter later, I promise. And you are NOT Death. We’d have to pay you overtime if you were Death. You’re a Non-living Contractor, and NLC. You’re only one of many, and you CAN be replaced.",
+"type": "dialogue"
+}
+}
