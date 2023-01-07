@@ -1,26 +1,14 @@
-[![version](https://img.shields.io/badge/plugin%20version-0.9.0-blue)](https://github.com/fenix-hub/godot-engine.github-integration)
-[![updates](https://img.shields.io/badge/plugin%20updates-on%20discord-purple)](https://discord.gg/JNrcucg)
-[![paypal](https://img.shields.io/badge/donations-PayPal-cyan)](https://paypal.me/NSantilio?locale.x=it_IT)
+DeadLyft 
 
-Check my **[Discord](https://discord.gg/KnJGY9S)** to stay updated on this repository.  
-*(Recommended since the AssetLibrary is not automatically updated)*  
+Created for Ludum Dare 52 (Jan 6-8, 2023)
 
-This plugin is now supported in [Godot Extended Library Discord](https://discord.gg/JNrcucg), check out the [Godot Extended Library Project](https://github.com/godot-extended-libraries)!
-
-<img src="addons/github-integration/github-logo.png" align="left" width="64" height="64">
+Check out the game page for more info **[https://ldjam.com/events/ludum-dare/52/$315097](https://ldjam.com/events/ludum-dare/52/$315097)**.
 
 # GitHub Integration
 A complete GitHub integration for your Godot Editor! Manage your project without even opening your browser.
 
-Author: *"Nicolo (fenix) Santilio"*  
-Version: *0.9.0*  
-Wiki: *[supported](https://github.com/fenix-hub/godot-engine.github-integration/wiki)*  
-Godot Version: *3.2stable*  
+## Team
 
-## What is this?
-*GitHub Integration* is a addon for Godot Engine that I've created mainly for a personal purpose.  
-Pushing and Pulling personal repositories while I'm working on Godot (especially if I'm under a GameJam) could take some time and force me to save the project, open the brwoser/git bash/git gui, and do all the stuff.  
-With this little addon which works directly in the editor, managing all your repositories will be very easy.  
 
 ## How does it work?
 I'm currently working on a [Wiki](https://github.com/fenix-hub/godot-engine.github-integration/wiki) for this plugin. It is a process that will take some time to complete since I want to provide a well-organized wiki with some basic explanations about GitHub itself. Anyway, I'm working on a user-friendly plugin, so everything should be the very ease to use for GitHub experienced users, and a little intuitive for people who never used GitHub or are not so experienced.
