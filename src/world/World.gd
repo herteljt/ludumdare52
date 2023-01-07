@@ -2,14 +2,12 @@ extends Node2D
 
 onready var scene_vars = get_node("/root/GameState")
 
-
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
-#func new_game():
-#	score = 0
-#	$HUD.update_score(score)
+func new_game():
+	$HUD.update_score(scene_vars.score)
 #
 #	get_tree().call_group("mobs", "queue_free")
 #	$Player.start($StartPosition.position)
@@ -32,21 +30,33 @@ onready var scene_vars = get_node("/root/GameState")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var resource = preload("res://assets/dialogue/tutorial.tres")
+	scene_vars.score = 0
+	scene_vars.score_change_amount = 0
+	scene_vars.score_change = false
+	
+	var resource = preload("res://assets/dialogue/dialogue_mike.tres")
+
 	DialogueManager.show_example_dialogue_balloon(\
-	"tutorial_start_node", \
+	"start", \
 	resource
 	)
 	
-
 	
+
+func update_score(score_change): 
+	print("Old score"+ str(scene_vars.score))
+	print("Score Change Amount"+ str(score_change))
+	scene_vars.score = scene_vars.score + score_change
+	print("New score"+ str(scene_vars.score))
+	print("UpdateScore") 
+	$HUD.update_score(scene_vars.score)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
 	if Input.is_action_pressed("ui_one"):
 		print("One pressed")
-		scene_vars.title_scene == true
 	
 	if scene_vars.title_scene == true:
 		print("Title Scene")
@@ -55,11 +65,13 @@ func _process(delta):
 		$DossierScene.visible = false
 		$EndScene.visible = false
 	if scene_vars.driving_scene == true:
-		print("Driving Scene")
+		#print("Driving Scene")
 		$TitleScene.visible = false
 		$DrivingScene.visible = true
 		$DossierScene.visible = false
 		$EndScene.visible = false
+		
+		
 	if scene_vars.dossier_scene == true:
 		print("Dossier Scene")
 		$TitleScene.visible = false

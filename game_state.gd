@@ -16,8 +16,9 @@ var driving_scene = true
 var dossier_scene = false
 var end_scene = false
 
-var score = 0
-
+var score: int
+var score_change: bool
+var score_change_amount: int
 var character: int
 
 #comment

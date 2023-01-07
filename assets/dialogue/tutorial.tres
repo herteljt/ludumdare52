@@ -4,15 +4,19 @@
 
 [resource]
 script = ExtResource( 1 )
-resource_version = 42
+resource_version = 58
 syntax_version = 2
 raw_text = "~ tutorial_start_node
-Trainer: Ok, next. Who are you, then?
+set score_change = false
 
+Trainer: Ok, next. Who are you, then?
 Player: 
 - It’s me, Death!
+	You picked \"It's me, Death!\"
 - I’m Death, bub!
 - Are these really my only choices?
+
+
 
 Trainer: Yes, those are your only choices. They’ll matter later, I promise. And you are NOT Death. We’d have to pay you overtime if you were Death. You’re a Non-living Contractor, and NLC. You’re only one of many, and you CAN be replaced.
 
@@ -52,8 +56,17 @@ Trainer:Ok, so now you are gonna go pick her up, and drive her to her ultimate f
 
 
 
-~ fare_node
+~ testing_node
+do update_score(-5)
 Reap: The fare tracks how much a soul is worth. 
+- Choice 1
+	You picked Choice 1.
+	do update_score(10)
+- Choice 2
+	You picked Choice 2.
+- Choice 3
+	You picked Choice 3.
+
 Reap: More damning information = more value.
 
 ~ tutorial_old_node
@@ -81,13 +94,41 @@ Reap: Your task is to get as much information as possible without upsetting a so
 Reap: As souls tell you their mischief, you'll see the fare increase.
 Reap: You need to make you daily quota of course. We're professionals here.
 Reap: Any questions?
-- Yeah, what you mean by fare? => fare_node
+- Yeah, what you mean by fare?
 - End the convesation. => END
-- Start again => tutorial_start_node"
+- Start again => tutorial_start_node
+
+~ start
+Dossier: Mike did two tours in Vietnam and after the war got a job building cars. He married his high school sweetheart Eleanor and raised a family of four kids, the eldest a boy and the other three girls. He was laid off in the eighties and worked a series of retail jobs until his retirement in 2014, and he has been painting watercolors in his spare time since.  
+
+Dossier: 
+He died of a blow to the head from his lovely wife Eleanor. => Mike_Dowager
+
+~ Mike_Dowager
+
+Direction: You arrive at a rather run down home in the suburbs, the white picket fence overgrown with weeds and the yard littered with various bits of construction materials. Half the home has had its siding torn off, with no sign of work being done to replace it.
+
+Direction: Mike walks off of the porch and down a barely visible garden path toward the curb, careful to avoid the absolutely baffling amount of yard gnomes, spinning sunflowers, and other kitchy googaws that line it.
+
+Direction: As he sits down in the car he makes a series of pops and creaks accompanied by a steady stream of muttered profanity.Once settled into the seat he waves his phone at you angrily.
+
+Mike: I don’t know if I did this right. My boy showed me how to use this thing, but it never works right. Are you Craig?
+
+Player:
+- No, I am a psychopomp, here to ferry you to the beyond. 
+	Mike: Say what? Look, I ain’t got time for no performance art weirdness, I just gotta get to…huh….not sure where I was going. Just drive, I guess.
+- That’s me!
+	Mike: Right, good. Take me to…err…dammit, I don’t remember. Just drive.
+- Craig was sick, I’m filling in.
+	Mike: Right, right. 
+	Directions: He waits for a moment for you to introduce yourself. When it becomes clear you will not he shakes his head,.
+	Mike: Fine then. Well I think I chose my destination in the thing already, just drive."
 errors = [  ]
 titles = {
-"fare_node": "47",
-"tutorial_old_node": "51",
+"Mike_Dowager": "100",
+"start": "93",
+"testing_node": "51",
+"tutorial_old_node": "64",
 "tutorial_start_node": "1"
 }
 lines = {
@@ -97,87 +138,222 @@ lines = {
 "type": "title"
 },
 "1": {
-"character": "Trainer",
-"character_replacements": [  ],
+"mutation": {
+"expression": [ {
+"type": "variable",
+"value": "score_change"
+}, {
+"type": "assignment",
+"value": "="
+}, {
+"type": "bool",
+"value": false
+} ]
+},
 "next_id": "3",
+"type": "mutation"
+},
+"100": {
+"character": "Direction",
+"character_replacements": [  ],
+"next_id": "102",
 "replacements": [  ],
-"text": "Ok, next. Who are you, then?",
-"translation_key": "Ok, next. Who are you, then?",
+"text": "You arrive at a rather run down home in the suburbs, the white picket fence overgrown with weeds and the yard littered with various bits of construction materials. Half the home has had its siding torn off, with no sign of work being done to replace it.",
+"translation_key": "You arrive at a rather run down home in the suburbs, the white picket fence overgrown with weeds and the yard littered with various bits of construction materials. Half the home has had its siding torn off, with no sign of work being done to replace it.",
 "type": "dialogue"
 },
-"10": {
+"102": {
+"character": "Direction",
+"character_replacements": [  ],
+"next_id": "104",
+"replacements": [  ],
+"text": "Mike walks off of the porch and down a barely visible garden path toward the curb, careful to avoid the absolutely baffling amount of yard gnomes, spinning sunflowers, and other kitchy googaws that line it.",
+"translation_key": "Mike walks off of the porch and down a barely visible garden path toward the curb, careful to avoid the absolutely baffling amount of yard gnomes, spinning sunflowers, and other kitchy googaws that line it.",
+"type": "dialogue"
+},
+"104": {
+"character": "Direction",
+"character_replacements": [  ],
+"next_id": "106",
+"replacements": [  ],
+"text": "As he sits down in the car he makes a series of pops and creaks accompanied by a steady stream of muttered profanity.Once settled into the seat he waves his phone at you angrily.",
+"translation_key": "As he sits down in the car he makes a series of pops and creaks accompanied by a steady stream of muttered profanity.Once settled into the seat he waves his phone at you angrily.",
+"type": "dialogue"
+},
+"106": {
+"character": "Mike",
+"character_replacements": [  ],
+"next_id": "108",
+"replacements": [  ],
+"text": "I don’t know if I did this right. My boy showed me how to use this thing, but it never works right. Are you Craig?",
+"translation_key": "I don’t know if I did this right. My boy showed me how to use this thing, but it never works right. Are you Craig?",
+"type": "dialogue"
+},
+"108": {
 "character": "",
-"next_id": "11",
+"next_id": "109",
 "replacements": [  ],
 "text": "Player:",
 "translation_key": "Player:",
 "type": "dialogue"
 },
-"11": {
-"next_id": "12",
-"next_id_after": "18",
+"109": {
+"next_id": "110",
+"next_id_after": "end!",
 "replacements": [  ],
-"responses": PoolStringArray( "11", "13", "15" ),
-"text": "Nope!",
-"translation_key": "Nope!",
+"responses": PoolStringArray( "109", "111", "113" ),
+"text": "No, I am a psychopomp, here to ferry you to the beyond. ",
+"translation_key": "No, I am a psychopomp, here to ferry you to the beyond. ",
 "type": "response"
+},
+"110": {
+"character": "Mike",
+"character_replacements": [  ],
+"next_id": "end!",
+"parent_id": "109",
+"replacements": [  ],
+"text": "Say what? Look, I ain’t got time for no performance art weirdness, I just gotta get to…huh….not sure where I was going. Just drive, I guess.",
+"translation_key": "Say what? Look, I ain’t got time for no performance art weirdness, I just gotta get to…huh….not sure where I was going. Just drive, I guess.",
+"type": "dialogue"
+},
+"111": {
+"next_id": "112",
+"next_id_after": "end!",
+"replacements": [  ],
+"text": "That’s me!",
+"translation_key": "That’s me!",
+"type": "response"
+},
+"112": {
+"character": "Mike",
+"character_replacements": [  ],
+"next_id": "end!",
+"parent_id": "111",
+"replacements": [  ],
+"text": "Right, good. Take me to…err…dammit, I don’t remember. Just drive.",
+"translation_key": "Right, good. Take me to…err…dammit, I don’t remember. Just drive.",
+"type": "dialogue"
+},
+"113": {
+"next_id": "114",
+"next_id_after": "end!",
+"replacements": [  ],
+"text": "Craig was sick, I’m filling in.",
+"translation_key": "Craig was sick, I’m filling in.",
+"type": "response"
+},
+"114": {
+"character": "Mike",
+"character_replacements": [  ],
+"next_id": "115",
+"parent_id": "113",
+"replacements": [  ],
+"text": "Right, right. ",
+"translation_key": "Right, right. ",
+"type": "dialogue"
+},
+"115": {
+"character": "Directions",
+"character_replacements": [  ],
+"next_id": "116",
+"parent_id": "113",
+"replacements": [  ],
+"text": "He waits for a moment for you to introduce yourself. When it becomes clear you will not he shakes his head,.",
+"translation_key": "He waits for a moment for you to introduce yourself. When it becomes clear you will not he shakes his head,.",
+"type": "dialogue"
+},
+"116": {
+"character": "Mike",
+"character_replacements": [  ],
+"next_id": "end!",
+"parent_id": "113",
+"replacements": [  ],
+"text": "Fine then. Well I think I chose my destination in the thing already, just drive.",
+"translation_key": "Fine then. Well I think I chose my destination in the thing already, just drive.",
+"type": "dialogue"
 },
 "12": {
 "character": "Trainer",
 "character_replacements": [  ],
-"next_id": "18",
-"parent_id": "11",
+"next_id": "14",
 "replacements": [  ],
-"text": "Fine, I’ll make it easy, pick up, make them talk to you about bad stuff they did, then drop them in the Styx.",
-"translation_key": "Fine, I’ll make it easy, pick up, make them talk to you about bad stuff they did, then drop them in the Styx.",
+"text": "Yes, those are your only choices. They’ll matter later, I promise. And you are NOT Death. We’d have to pay you overtime if you were Death. You’re a Non-living Contractor, and NLC. You’re only one of many, and you CAN be replaced.",
+"translation_key": "Yes, those are your only choices. They’ll matter later, I promise. And you are NOT Death. We’d have to pay you overtime if you were Death. You’re a Non-living Contractor, and NLC. You’re only one of many, and you CAN be replaced.",
 "type": "dialogue"
 },
-"13": {
-"next_id": "14",
-"next_id_after": "18",
-"replacements": [  ],
-"text": "Yes!",
-"translation_key": "Yes!",
-"type": "response"
-},
 "14": {
-"character": "Trainer",
-"character_replacements": [  ],
-"next_id": "18",
-"parent_id": "13",
+"character": "",
+"next_id": "15",
 "replacements": [  ],
-"text": "Amazing. Someone with half a brain left rattling around in that bone box.",
-"translation_key": "Amazing. Someone with half a brain left rattling around in that bone box.",
+"text": "Player:",
+"translation_key": "Player:",
 "type": "dialogue"
 },
 "15": {
 "next_id": "16",
-"next_id_after": "18",
+"next_id_after": "22",
 "replacements": [  ],
-"text": "examples, please!",
-"translation_key": "examples, please!",
+"responses": PoolStringArray( "15", "17", "19" ),
+"text": "Nope!",
+"translation_key": "Nope!",
 "type": "response"
 },
 "16": {
 "character": "Trainer",
 "character_replacements": [  ],
-"next_id": "18",
+"next_id": "22",
 "parent_id": "15",
+"replacements": [  ],
+"text": "Fine, I’ll make it easy, pick up, make them talk to you about bad stuff they did, then drop them in the Styx.",
+"translation_key": "Fine, I’ll make it easy, pick up, make them talk to you about bad stuff they did, then drop them in the Styx.",
+"type": "dialogue"
+},
+"17": {
+"next_id": "18",
+"next_id_after": "22",
+"replacements": [  ],
+"text": "Yes!",
+"translation_key": "Yes!",
+"type": "response"
+},
+"18": {
+"character": "Trainer",
+"character_replacements": [  ],
+"next_id": "22",
+"parent_id": "17",
+"replacements": [  ],
+"text": "Amazing. Someone with half a brain left rattling around in that bone box.",
+"translation_key": "Amazing. Someone with half a brain left rattling around in that bone box.",
+"type": "dialogue"
+},
+"19": {
+"next_id": "20",
+"next_id_after": "22",
+"replacements": [  ],
+"text": "examples, please!",
+"translation_key": "examples, please!",
+"type": "response"
+},
+"20": {
+"character": "Trainer",
+"character_replacements": [  ],
+"next_id": "22",
+"parent_id": "19",
 "replacements": [  ],
 "text": "I’m getting to that!",
 "translation_key": "I’m getting to that!",
 "type": "dialogue"
 },
-"18": {
+"22": {
 "character": "Trainer",
 "character_replacements": [  ],
-"next_id": "20",
+"next_id": "24",
 "replacements": [  ],
 "text": "Anyway, I am here to teach you how to do your job. I know what you’re thinking, right? Why does a self directed app based business need someone to train every single user? And to that I say, shut up. First off, choose a file.",
 "translation_key": "Anyway, I am here to teach you how to do your job. I know what you’re thinking, right? Why does a self directed app based business need someone to train every single user? And to that I say, shut up. First off, choose a file.",
 "type": "dialogue"
 },
-"20": {
+"24": {
 "mutation": {
 "expression": [ {
 "type": "variable",
@@ -190,19 +366,28 @@ lines = {
 "value": true
 } ]
 },
-"next_id": "26",
+"next_id": "30",
 "type": "mutation"
 },
-"26": {
+"3": {
 "character": "Trainer",
 "character_replacements": [  ],
-"next_id": "27",
+"next_id": "4",
+"replacements": [  ],
+"text": "Ok, next. Who are you, then?",
+"translation_key": "Ok, next. Who are you, then?",
+"type": "dialogue"
+},
+"30": {
+"character": "Trainer",
+"character_replacements": [  ],
+"next_id": "31",
 "replacements": [  ],
 "text": "Jane was a retail sales employee. She hated Mondays. Her 1.94 children loved playing and fun. She died by a heart attack at 77.28 years old.",
 "translation_key": "Jane was a retail sales employee. She hated Mondays. Her 1.94 children loved playing and fun. She died by a heart attack at 77.28 years old.",
 "type": "dialogue"
 },
-"27": {
+"31": {
 "mutation": {
 "expression": [ {
 "type": "variable",
@@ -215,90 +400,90 @@ lines = {
 "value": 2
 } ]
 },
-"next_id": "29",
+"next_id": "33",
 "type": "mutation"
 },
-"29": {
+"33": {
 "character": "Trainer",
 "character_replacements": [  ],
-"next_id": "31",
+"next_id": "35",
 "replacements": [  ],
 "text": "Yes, I know they are the same, it’s for demonstration purposes, and good thing too. A person that average would collapse space time.",
 "translation_key": "Yes, I know they are the same, it’s for demonstration purposes, and good thing too. A person that average would collapse space time.",
 "type": "dialogue"
 },
-"3": {
-"character": "",
-"next_id": "4",
-"replacements": [  ],
-"text": "Player:",
-"translation_key": "Player:",
-"type": "dialogue"
-},
-"31": {
-"character": "",
-"next_id": "32",
-"replacements": [  ],
-"text": "Player:",
-"translation_key": "Player:",
-"type": "dialogue"
-},
-"32": {
-"next_id": "33",
-"next_id_after": "39",
-"replacements": [  ],
-"responses": PoolStringArray( "32", "34", "36" ),
-"text": "I’ll choose Jane!",
-"translation_key": "I’ll choose Jane!",
-"type": "response"
-},
-"33": {
-"character": "Trainer",
-"character_replacements": [  ],
-"next_id": "39",
-"parent_id": "32",
-"replacements": [  ],
-"text": "Sounds good.",
-"translation_key": "Sounds good.",
-"type": "dialogue"
-},
-"34": {
-"next_id": "35",
-"next_id_after": "39",
-"replacements": [  ],
-"text": "Jane’s my choice!",
-"translation_key": "Jane’s my choice!",
-"type": "response"
-},
 "35": {
-"character": "Trainer",
-"character_replacements": [  ],
-"next_id": "39",
-"parent_id": "34",
+"character": "",
+"next_id": "36",
 "replacements": [  ],
-"text": "A rebel, eh?",
-"translation_key": "A rebel, eh?",
+"text": "Player:",
+"translation_key": "Player:",
 "type": "dialogue"
 },
 "36": {
 "next_id": "37",
-"next_id_after": "39",
+"next_id_after": "43",
 "replacements": [  ],
-"text": "Why are you doing this to me?",
-"translation_key": "Why are you doing this to me?",
+"responses": PoolStringArray( "36", "38", "40" ),
+"text": "I’ll choose Jane!",
+"translation_key": "I’ll choose Jane!",
 "type": "response"
 },
 "37": {
 "character": "Trainer",
 "character_replacements": [  ],
-"next_id": "39",
+"next_id": "43",
 "parent_id": "36",
+"replacements": [  ],
+"text": "Sounds good.",
+"translation_key": "Sounds good.",
+"type": "dialogue"
+},
+"38": {
+"next_id": "39",
+"next_id_after": "43",
+"replacements": [  ],
+"text": "Jane’s my choice!",
+"translation_key": "Jane’s my choice!",
+"type": "response"
+},
+"39": {
+"character": "Trainer",
+"character_replacements": [  ],
+"next_id": "43",
+"parent_id": "38",
+"replacements": [  ],
+"text": "A rebel, eh?",
+"translation_key": "A rebel, eh?",
+"type": "dialogue"
+},
+"4": {
+"character": "",
+"next_id": "5",
+"replacements": [  ],
+"text": "Player:",
+"translation_key": "Player:",
+"type": "dialogue"
+},
+"40": {
+"next_id": "41",
+"next_id_after": "43",
+"replacements": [  ],
+"text": "Why are you doing this to me?",
+"translation_key": "Why are you doing this to me?",
+"type": "response"
+},
+"41": {
+"character": "Trainer",
+"character_replacements": [  ],
+"next_id": "43",
+"parent_id": "40",
 "replacements": [  ],
 "text": "You say you want Jane, eh?",
 "translation_key": "You say you want Jane, eh?",
 "type": "dialogue"
 },
-"39": {
+"43": {
 "mutation": {
 "expression": [ {
 "type": "variable",
@@ -311,19 +496,10 @@ lines = {
 "value": false
 } ]
 },
-"next_id": "40",
+"next_id": "44",
 "type": "mutation"
 },
-"4": {
-"next_id": "8",
-"next_id_after": "8",
-"replacements": [  ],
-"responses": PoolStringArray( "4", "5", "6" ),
-"text": "It’s me, Death!",
-"translation_key": "It’s me, Death!",
-"type": "response"
-},
-"40": {
+"44": {
 "mutation": {
 "expression": [ {
 "type": "variable",
@@ -336,10 +512,10 @@ lines = {
 "value": true
 } ]
 },
-"next_id": "42",
+"next_id": "46",
 "type": "mutation"
 },
-"42": {
+"46": {
 "character": "",
 "next_id": "",
 "replacements": [  ],
@@ -347,21 +523,120 @@ lines = {
 "translation_key": "Trainer:Ok, so now you are gonna go pick her up, and drive her to her ultimate fate. But that’s the easy bit. The hard part is getting them to talk about themselves. The stuff they did. The worse the better. Cause that pushes up their fare, and the higher the fare, the longer they stay in Purgatory and out o’ the bosses’ way. Then you let them out and after a quick dunk in the Styx, they are good to go. We clear?",
 "type": "dialogue"
 },
-"46": {
-"next_id": "47",
-"text": "fare_node",
+"5": {
+"next_id": "6",
+"next_id_after": "12",
+"replacements": [  ],
+"responses": PoolStringArray( "5", "7", "8" ),
+"text": "It’s me, Death!",
+"translation_key": "It’s me, Death!",
+"type": "response"
+},
+"50": {
+"next_id": "51",
+"text": "testing_node",
 "type": "title"
 },
-"47": {
+"51": {
+"mutation": {
+"expression": [ {
+"function": "update_score",
+"type": "function",
+"value": [ [ {
+"type": "number",
+"value": -5
+} ] ]
+} ]
+},
+"next_id": "52",
+"type": "mutation"
+},
+"52": {
 "character": "Reap",
 "character_replacements": [  ],
-"next_id": "48",
+"next_id": "53",
 "replacements": [  ],
 "text": "The fare tracks how much a soul is worth.",
 "translation_key": "The fare tracks how much a soul is worth.",
 "type": "dialogue"
 },
-"48": {
+"53": {
+"next_id": "54",
+"next_id_after": "61",
+"replacements": [  ],
+"responses": PoolStringArray( "53", "56", "58" ),
+"text": "Choice 1",
+"translation_key": "Choice 1",
+"type": "response"
+},
+"54": {
+"character": "",
+"next_id": "55",
+"parent_id": "53",
+"replacements": [  ],
+"text": "You picked Choice 1.",
+"translation_key": "You picked Choice 1.",
+"type": "dialogue"
+},
+"55": {
+"mutation": {
+"expression": [ {
+"function": "update_score",
+"type": "function",
+"value": [ [ {
+"type": "number",
+"value": 10
+} ] ]
+} ]
+},
+"next_id": "61",
+"parent_id": "53",
+"type": "mutation"
+},
+"56": {
+"next_id": "57",
+"next_id_after": "61",
+"replacements": [  ],
+"text": "Choice 2",
+"translation_key": "Choice 2",
+"type": "response"
+},
+"57": {
+"character": "",
+"next_id": "61",
+"parent_id": "56",
+"replacements": [  ],
+"text": "You picked Choice 2.",
+"translation_key": "You picked Choice 2.",
+"type": "dialogue"
+},
+"58": {
+"next_id": "59",
+"next_id_after": "61",
+"replacements": [  ],
+"text": "Choice 3",
+"translation_key": "Choice 3",
+"type": "response"
+},
+"59": {
+"character": "",
+"next_id": "61",
+"parent_id": "58",
+"replacements": [  ],
+"text": "You picked Choice 3.",
+"translation_key": "You picked Choice 3.",
+"type": "dialogue"
+},
+"6": {
+"character": "",
+"next_id": "12",
+"parent_id": "5",
+"replacements": [  ],
+"text": "You picked \"It's me, Death!\"",
+"translation_key": "You picked \"It's me, Death!\"",
+"type": "dialogue"
+},
+"61": {
 "character": "Reap",
 "character_replacements": [  ],
 "next_id": "",
@@ -370,20 +645,12 @@ lines = {
 "translation_key": "More damning information = more value.",
 "type": "dialogue"
 },
-"5": {
-"next_id": "8",
-"next_id_after": "8",
-"replacements": [  ],
-"text": "I’m Death, bub!",
-"translation_key": "I’m Death, bub!",
-"type": "response"
-},
-"50": {
-"next_id": "51",
+"63": {
+"next_id": "64",
 "text": "tutorial_old_node",
 "type": "title"
 },
-"51": {
+"64": {
 "condition": {
 "expression": [ {
 "type": "variable",
@@ -396,32 +663,32 @@ lines = {
 "value": false
 } ]
 },
-"next_conditional_id": "55",
-"next_id": "52",
-"next_id_after": "57",
+"next_conditional_id": "68",
+"next_id": "65",
+"next_id_after": "70",
 "type": "condition"
 },
-"52": {
+"65": {
 "character": "Reap",
 "character_replacements": [  ],
-"next_id": "53",
-"parent_id": "51",
+"next_id": "66",
+"parent_id": "64",
 "replacements": [  ],
 "text": "Welcome to [wave amp=25 freq=5]DeadLyft[/wave]!",
 "translation_key": "Welcome to [wave amp=25 freq=5]DeadLyft[/wave]!",
 "type": "dialogue"
 },
-"53": {
+"66": {
 "character": "Reap",
 "character_replacements": [  ],
-"next_id": "54",
-"parent_id": "51",
+"next_id": "67",
+"parent_id": "64",
 "replacements": [  ],
 "text": "This tutorial will show you how to play the game.",
 "translation_key": "This tutorial will show you how to play the game.",
 "type": "dialogue"
 },
-"54": {
+"67": {
 "mutation": {
 "expression": [ {
 "type": "variable",
@@ -434,195 +701,203 @@ lines = {
 "value": true
 } ]
 },
-"next_id": "57",
-"parent_id": "51",
+"next_id": "70",
+"parent_id": "64",
 "type": "mutation"
 },
-"55": {
-"next_conditional_id": "57",
-"next_id": "56",
-"next_id_after": "57",
+"68": {
+"next_conditional_id": "70",
+"next_id": "69",
+"next_id_after": "70",
 "type": "condition"
 },
-"56": {
+"69": {
 "character": "Reap",
 "character_replacements": [  ],
-"next_id": "57",
-"parent_id": "55",
+"next_id": "70",
+"parent_id": "68",
 "replacements": [  ],
 "text": "Welcome back!",
 "translation_key": "Welcome back!",
 "type": "dialogue"
 },
-"57": {
+"7": {
+"next_id": "12",
+"next_id_after": "12",
+"replacements": [  ],
+"text": "I’m Death, bub!",
+"translation_key": "I’m Death, bub!",
+"type": "response"
+},
+"70": {
 "character": "Reap",
 "character_replacements": [  ],
-"next_id": "58",
+"next_id": "71",
 "replacements": [  ],
 "text": "You work as a driver for soulsharing app DeadLyft.",
 "translation_key": "You work as a driver for soulsharing app DeadLyft.",
 "type": "dialogue"
 },
-"58": {
+"71": {
 "character": "Reap",
 "character_replacements": [  ],
-"next_id": "59",
+"next_id": "72",
 "replacements": [  ],
 "text": "You've been tasked with trying to ferry the souls to the everafter.",
 "translation_key": "You've been tasked with trying to ferry the souls to the everafter.",
 "type": "dialogue"
-},
-"59": {
-"character": "Reap",
-"character_replacements": [  ],
-"next_id": "60",
-"replacements": [  ],
-"text": "As you drive, you'll engage in conversations with patrons and have to make choices about where to push the conversation.",
-"translation_key": "As you drive, you'll engage in conversations with patrons and have to make choices about where to push the conversation.",
-"type": "dialogue"
-},
-"6": {
-"next_id": "8",
-"next_id_after": "8",
-"replacements": [  ],
-"text": "Are these really my only choices?",
-"translation_key": "Are these really my only choices?",
-"type": "response"
-},
-"60": {
-"next_id": "61",
-"next_id_after": "65",
-"replacements": [  ],
-"responses": PoolStringArray( "60", "62", "63" ),
-"text": "Tell me more.",
-"translation_key": "Tell me more.",
-"type": "response"
-},
-"61": {
-"character": "Reap",
-"character_replacements": [  ],
-"next_id": "65",
-"parent_id": "60",
-"replacements": [  ],
-"text": "Of course!",
-"translation_key": "Of course!",
-"type": "dialogue"
-},
-"62": {
-"next_id": "end",
-"next_id_after": "65",
-"replacements": [  ],
-"text": "End the convesation.",
-"translation_key": "End the convesation.",
-"type": "response"
-},
-"63": {
-"next_id": "1",
-"next_id_after": "65",
-"replacements": [  ],
-"text": "Start again",
-"translation_key": "Start again",
-"type": "response"
-},
-"65": {
-"character": "Reap",
-"character_replacements": [  ],
-"next_id": "66",
-"replacements": [  ],
-"text": "You see, Hell runneth over. So the higher-ups have tasked you with extending the stay of souls in purgatory.",
-"translation_key": "You see, Hell runneth over. So the higher-ups have tasked you with extending the stay of souls in purgatory.",
-"type": "dialogue"
-},
-"66": {
-"character": "Reap",
-"character_replacements": [  ],
-"next_id": "67",
-"replacements": [  ],
-"text": "The more information you can harvest from an individual, the longer their stay in purgatory will be.",
-"translation_key": "The more information you can harvest from an individual, the longer their stay in purgatory will be.",
-"type": "dialogue"
-},
-"67": {
-"character": "Reap",
-"character_replacements": [  ],
-"next_id": "68",
-"replacements": [  ],
-"text": "Your task is to get as much information as possible without upsetting a soul too much.",
-"translation_key": "Your task is to get as much information as possible without upsetting a soul too much.",
-"type": "dialogue"
-},
-"68": {
-"next_id": "69",
-"next_id_after": "72",
-"replacements": [  ],
-"responses": PoolStringArray( "68", "70", "71" ),
-"text": "So I'm trying to get them to tell me the terrible things they did without realizing it?",
-"translation_key": "So I'm trying to get them to tell me the terrible things they did without realizing it?",
-"type": "response"
-},
-"69": {
-"character": "Reap",
-"character_replacements": [  ],
-"next_id": "72",
-"parent_id": "68",
-"replacements": [  ],
-"text": "Yep, basically.",
-"translation_key": "Yep, basically.",
-"type": "dialogue"
-},
-"70": {
-"next_id": "end",
-"next_id_after": "72",
-"replacements": [  ],
-"text": "End the convesation.",
-"translation_key": "End the convesation.",
-"type": "response"
-},
-"71": {
-"next_id": "1",
-"next_id_after": "72",
-"replacements": [  ],
-"text": "Start again",
-"translation_key": "Start again",
-"type": "response"
 },
 "72": {
 "character": "Reap",
 "character_replacements": [  ],
 "next_id": "73",
 "replacements": [  ],
+"text": "As you drive, you'll engage in conversations with patrons and have to make choices about where to push the conversation.",
+"translation_key": "As you drive, you'll engage in conversations with patrons and have to make choices about where to push the conversation.",
+"type": "dialogue"
+},
+"73": {
+"next_id": "74",
+"next_id_after": "78",
+"replacements": [  ],
+"responses": PoolStringArray( "73", "75", "76" ),
+"text": "Tell me more.",
+"translation_key": "Tell me more.",
+"type": "response"
+},
+"74": {
+"character": "Reap",
+"character_replacements": [  ],
+"next_id": "78",
+"parent_id": "73",
+"replacements": [  ],
+"text": "Of course!",
+"translation_key": "Of course!",
+"type": "dialogue"
+},
+"75": {
+"next_id": "end",
+"next_id_after": "78",
+"replacements": [  ],
+"text": "End the convesation.",
+"translation_key": "End the convesation.",
+"type": "response"
+},
+"76": {
+"next_id": "1",
+"next_id_after": "78",
+"replacements": [  ],
+"text": "Start again",
+"translation_key": "Start again",
+"type": "response"
+},
+"78": {
+"character": "Reap",
+"character_replacements": [  ],
+"next_id": "79",
+"replacements": [  ],
+"text": "You see, Hell runneth over. So the higher-ups have tasked you with extending the stay of souls in purgatory.",
+"translation_key": "You see, Hell runneth over. So the higher-ups have tasked you with extending the stay of souls in purgatory.",
+"type": "dialogue"
+},
+"79": {
+"character": "Reap",
+"character_replacements": [  ],
+"next_id": "80",
+"replacements": [  ],
+"text": "The more information you can harvest from an individual, the longer their stay in purgatory will be.",
+"translation_key": "The more information you can harvest from an individual, the longer their stay in purgatory will be.",
+"type": "dialogue"
+},
+"8": {
+"next_id": "12",
+"next_id_after": "12",
+"replacements": [  ],
+"text": "Are these really my only choices?",
+"translation_key": "Are these really my only choices?",
+"type": "response"
+},
+"80": {
+"character": "Reap",
+"character_replacements": [  ],
+"next_id": "81",
+"replacements": [  ],
+"text": "Your task is to get as much information as possible without upsetting a soul too much.",
+"translation_key": "Your task is to get as much information as possible without upsetting a soul too much.",
+"type": "dialogue"
+},
+"81": {
+"next_id": "82",
+"next_id_after": "85",
+"replacements": [  ],
+"responses": PoolStringArray( "81", "83", "84" ),
+"text": "So I'm trying to get them to tell me the terrible things they did without realizing it?",
+"translation_key": "So I'm trying to get them to tell me the terrible things they did without realizing it?",
+"type": "response"
+},
+"82": {
+"character": "Reap",
+"character_replacements": [  ],
+"next_id": "85",
+"parent_id": "81",
+"replacements": [  ],
+"text": "Yep, basically.",
+"translation_key": "Yep, basically.",
+"type": "dialogue"
+},
+"83": {
+"next_id": "end",
+"next_id_after": "85",
+"replacements": [  ],
+"text": "End the convesation.",
+"translation_key": "End the convesation.",
+"type": "response"
+},
+"84": {
+"next_id": "1",
+"next_id_after": "85",
+"replacements": [  ],
+"text": "Start again",
+"translation_key": "Start again",
+"type": "response"
+},
+"85": {
+"character": "Reap",
+"character_replacements": [  ],
+"next_id": "86",
+"replacements": [  ],
 "text": "As souls tell you their mischief, you'll see the fare increase.",
 "translation_key": "As souls tell you their mischief, you'll see the fare increase.",
 "type": "dialogue"
 },
-"73": {
+"86": {
 "character": "Reap",
 "character_replacements": [  ],
-"next_id": "74",
+"next_id": "87",
 "replacements": [  ],
 "text": "You need to make you daily quota of course. We're professionals here.",
 "translation_key": "You need to make you daily quota of course. We're professionals here.",
 "type": "dialogue"
 },
-"74": {
+"87": {
 "character": "Reap",
 "character_replacements": [  ],
-"next_id": "75",
+"next_id": "88",
 "replacements": [  ],
 "text": "Any questions?",
 "translation_key": "Any questions?",
 "type": "dialogue"
 },
-"75": {
-"next_id": "47",
+"88": {
+"next_id": "end!",
 "next_id_after": "end!",
 "replacements": [  ],
-"responses": PoolStringArray( "75", "76", "77" ),
+"responses": PoolStringArray( "88", "89", "90" ),
 "text": "Yeah, what you mean by fare?",
 "translation_key": "Yeah, what you mean by fare?",
 "type": "response"
 },
-"76": {
+"89": {
 "next_id": "end",
 "next_id_after": "end!",
 "replacements": [  ],
@@ -630,7 +905,7 @@ lines = {
 "translation_key": "End the convesation.",
 "type": "response"
 },
-"77": {
+"90": {
 "next_id": "1",
 "next_id_after": "end!",
 "replacements": [  ],
@@ -638,13 +913,39 @@ lines = {
 "translation_key": "Start again",
 "type": "response"
 },
-"8": {
-"character": "Trainer",
+"92": {
+"next_id": "93",
+"text": "start",
+"type": "title"
+},
+"93": {
+"character": "Dossier",
 "character_replacements": [  ],
-"next_id": "10",
+"next_id": "95",
 "replacements": [  ],
-"text": "Yes, those are your only choices. They’ll matter later, I promise. And you are NOT Death. We’d have to pay you overtime if you were Death. You’re a Non-living Contractor, and NLC. You’re only one of many, and you CAN be replaced.",
-"translation_key": "Yes, those are your only choices. They’ll matter later, I promise. And you are NOT Death. We’d have to pay you overtime if you were Death. You’re a Non-living Contractor, and NLC. You’re only one of many, and you CAN be replaced.",
+"text": "Mike did two tours in Vietnam and after the war got a job building cars. He married his high school sweetheart Eleanor and raised a family of four kids, the eldest a boy and the other three girls. He was laid off in the eighties and worked a series of retail jobs until his retirement in 2014, and he has been painting watercolors in his spare time since.  ",
+"translation_key": "Mike did two tours in Vietnam and after the war got a job building cars. He married his high school sweetheart Eleanor and raised a family of four kids, the eldest a boy and the other three girls. He was laid off in the eighties and worked a series of retail jobs until his retirement in 2014, and he has been painting watercolors in his spare time since.  ",
 "type": "dialogue"
+},
+"95": {
+"character": "",
+"next_id": "96",
+"replacements": [  ],
+"text": "Dossier:",
+"translation_key": "Dossier:",
+"type": "dialogue"
+},
+"96": {
+"character": "",
+"next_id": "",
+"replacements": [  ],
+"text": "He died of a blow to the head from his lovely wife Eleanor. => Mike_Dowager",
+"translation_key": "He died of a blow to the head from his lovely wife Eleanor. => Mike_Dowager",
+"type": "dialogue"
+},
+"98": {
+"next_id": "100",
+"text": "Mike_Dowager",
+"type": "title"
 }
 }
