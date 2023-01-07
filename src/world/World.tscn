@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/player/PlayerSprite.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://assets/sprites/char_2.png" type="Texture" id=5]
 [ext_resource path="res://assets/sprites/char_1.png" type="Texture" id=6]
 [ext_resource path="res://assets/scenes/end.png" type="Texture" id=7]
+[ext_resource path="res://assets/scenes/driver.png" type="Texture" id=8]
+[ext_resource path="res://addons/dialogue_manager/example_balloon/font_normal.tres" type="DynamicFont" id=9]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -25,16 +27,37 @@ animations = [ {
 script = ExtResource( 4 )
 
 [node name="TitleScene" type="TextureRect" parent="."]
+visible = false
 margin_right = 1024.0
 margin_bottom = 768.0
 texture = ExtResource( 3 )
 
 [node name="DrivingScene" type="TextureRect" parent="."]
-margin_right = 1024.0
-margin_bottom = 768.0
-texture = ExtResource( 3 )
+margin_right = 4200.0
+margin_bottom = 3150.0
+rect_scale = Vector2( 0.244, 0.244 )
+texture = ExtResource( 8 )
+stretch_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="DrivingScene"]
+margin_left = 3094.26
+margin_top = 61.4754
+margin_right = 4086.26
+margin_bottom = 467.475
+color = Color( 0, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="DrivingScene"]
+margin_left = 3365.0
+margin_top = 217.0
+margin_right = 3787.0
+margin_bottom = 324.0
+custom_fonts/font = ExtResource( 9 )
+text = "Points"
+align = 1
+autowrap = true
 
 [node name="DossierScene" type="ColorRect" parent="."]
+visible = false
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -69,9 +92,6 @@ animation = "char_1"
 position = Vector2( 780, 188.889 )
 frames = SubResource( 1 )
 animation = "char_1"
-
-[node name="StartPosition" type="Position2D" parent="."]
-position = Vector2( 1, 4 )
 
 [node name="Icon" type="Sprite" parent="."]
 visible = false

@@ -11,7 +11,7 @@ A complete GitHub integration for your Godot Editor! Manage your project without
 
 
 ## Plugins
-
+Words, words
 
 
 
