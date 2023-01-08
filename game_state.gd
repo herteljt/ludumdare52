@@ -11,15 +11,19 @@ var left_image_name: String
 var right_image_name: String
 
 #Game State Variable
-var title_scene = false
-var driving_scene = true
-var dossier_scene = false
+var title_scene: bool
+var driving_scene: bool
+var talking_scene: bool
+var dossier_scene: bool
+var HUD: bool
 var end_scene = false
+
+var character: int
 
 var score: int
 var score_change: bool
 var score_change_amount: int
-var character: int
+
 
 #comment
 
