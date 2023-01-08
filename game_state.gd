@@ -18,7 +18,9 @@ var dossier_scene: bool
 var HUD: bool
 var end_scene = false
 
-var character: int
+var character_selected: int
+var character_left_dossier: int
+var character_right_dossier: int
 
 var score: int
 var score_change: bool

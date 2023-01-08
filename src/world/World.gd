@@ -8,6 +8,7 @@ onready var scene_vars = get_node("/root/GameState")
 
 var debug: bool = false
 var start: int
+var tutorial: int = 0
 
 func new_game():
 	scene_vars.title_scene = true
@@ -57,17 +58,26 @@ func _ready():
 #	"testing_node", \
 #	resource
 	#)
-	start = 1
+	start = 0
+	$Music.play()
 
 	
 
-func update_score(score_change): 
-	print("Old score"+ str(scene_vars.score))
-	print("Score Change Amount"+ str(score_change))
+#Function to update HUD score and strikes
+func update_score(score_change, strike): 
 	scene_vars.score = scene_vars.score + score_change
-	print("New score"+ str(scene_vars.score))
-	print("UpdateScore") 
 	$HUD.update_score(scene_vars.score)
+	
+	if strike == 1:
+		if scene_vars.strike1 == false:
+			scene_vars.strike1 = true
+			$HUD/Strike1.visible = true
+			print("Strike 1")
+		elif scene_vars.strike1 == true:
+			scene_vars.strike2 = true
+			$HUD/Strike2.visible = true
+			print("Strike 2")
+
 
 func change_scene():
 	if scene_vars.title_scene == true:
@@ -82,17 +92,20 @@ func change_scene():
 		$TalkingScene.visible = true
 		$HUD.visible = true
 		$DossierScene.visible = false
-		if scene_vars.character == 1:
+		if scene_vars.character_selected == 1:
 			$TalkingScene/CharacterSprite.animation="char_1"
-		if scene_vars.character == 2:
+		if scene_vars.character_selected == 2:
 			$TalkingScene/CharacterSprite.animation="char_2"
-		if scene_vars.character == 3:
+		if scene_vars.character_selected == 3:
 			$TalkingScene/CharacterSprite.animation="char_3"
-		if scene_vars.character == 4:
+		if scene_vars.character_selected == 4:
 			$TalkingScene/CharacterSprite.animation="char_4"
 	if scene_vars.dossier_scene == true:
 #		print("Dossier Scene Enabled")
 		$DossierScene.visible = true
+		$HUD.visible = false
+		$DossierScene/LeftSprite.animation="char_"+str(scene_vars.character_left_dossier)
+		$DossierScene/RightSprite.animation="char_"+str(scene_vars.character_right_dossier)
 	if scene_vars.HUD == true:
 #		print("HUD Enabled")
 		$HUD.visible = true
@@ -101,22 +114,43 @@ func change_scene():
 		$EndScene.visible = true
 
 
-
-	
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Input.is_action_just_pressed("ui_tutorial"):
+		tutorial = 1
+		start = 1
+		print("Start Value: "+str(start))
+		
 	if Input.is_action_just_pressed("ui_start"):
 		start = 1
 		print("Start Value: "+str(start))
+
+	if start == 1 and tutorial == 1:
+		var dialogue_balloon = load("res://assets/dialogue/tutorial.tres")
+		DialogueManager.show_example_dialogue_balloon(\
+		"tutorial", \
+		dialogue_balloon)
+		start = 2
+		scene_vars.driving_scene = true	
+		change_scene()
+		
+	if start == 1 and tutorial == 0:
+		var dialogue_balloon = load("res://assets/dialogue/tutorial.tres")
+		DialogueManager.show_example_dialogue_balloon(\
+		"testing_node", \
+		dialogue_balloon)
+		start = 2
+		scene_vars.driving_scene = true	
+		change_scene()
+
 
 	if start == 1:
 		var dialogue_balloon = load("res://assets/dialogue/tutorial.tres")
 		DialogueManager.show_example_dialogue_balloon(\
 		"testing_node", \
 		dialogue_balloon)
-		start = 0
-		scene_vars.dossier_scene = true	
+		start = 2
+		scene_vars.driving_scene = true	
 		change_scene()
 
 	if scene_vars.score < 0:
