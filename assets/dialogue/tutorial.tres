@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-resource_version = 114
+resource_version = 117
 syntax_version = 2
 raw_text = "~ testing_node
 set character_left_dossier = 1
@@ -12,9 +12,9 @@ set character_right_dossier = 2
 set dossier_scene = true
 do change_scene()
 
-Reap: Which person will you pick?
+Seeri: Which person will you pick?
 - Character 1
-	Reap: You've picked Character 1. 
+	Seeri: You've picked Character 1. 
 	set character_selected = 1
 	set dossier_scene = false
 	set HUD = true
@@ -22,7 +22,7 @@ Reap: Which person will you pick?
 	do change_scene()
 	=> character1
 - Character 2
-	Reap: You've picked Character 2
+	Seeri: You've picked Character 2
 	set character_selected = 2
 	set dossier_scene = false
 	set HUD = true
@@ -31,37 +31,37 @@ Reap: Which person will you pick?
 	=> character2
 
 ~ character1
-Reap: This is the dialogue for Character 1.
+Seeri: This is the dialogue for Character 1.
 
-Reap: Question 1: How many points do you want to earn?
+Seeri: Question 1: How many points do you want to earn?
 - Earn 5 points.
 	do update_score(5,0)
 	You've earned 5 points.
 - Earn 0 points and one strike (two strikes and you're out).
 	if strike1 == false
 		do update_score(0,1)
-		Reap: You've earned 0 points and a strike.
+		Seeri: You've earned 0 points and a strike.
 	else 
 		do update_score(0, 1)
-		Reap: (Sigh) I suppose we'll need to find another NLC...
+		Seeri: (Sigh) I suppose we'll need to find another NLC...
 		=> end_sequence
 - Restart dialogue => character1
 
-Reap: Question 2: How many points do you want to earn?
+Seeri: Question 2: How many points do you want to earn?
 - Earn 5 points.
 	do update_score(5,0)
 	You've earned 5 points.
 - Earn 0 points and one strike (two strikes and you're out).
 	if strike1 == false
 		do update_score(0,1)
-		Reap: You've earned 0 points and a strike.
+		Seeri: You've earned 0 points and a strike.
 	else 
 		do update_score(0, 1)
-		Reap: (Sigh) I suppose we'll need to find another NLC...
+		Seeri: (Sigh) I suppose we'll need to find another NLC...
 		=> end_sequence
 - Restart Character 1 dialogue => character1
 
-Reap: Back to the dossier screen!
+Seeri: Back to the dossier screen!
 set dossier_scene = true
 set HUD = false
 set talking_scene = false
@@ -69,37 +69,37 @@ do change_scene()
 => testing_node
 
 ~ character2
-Reap: This is the dialogue for Character 2, which is not Character 1. But it looks a lot like Character 1.
+Seeri: This is the dialogue for Character 2, which is not Character 1. But it looks a lot like Character 1.
 
-Reap: Question 1: How many points do you want to earn?
+Seeri: Question 1: How many points do you want to earn?
 - Earn 5 points.
 	do update_score(5,0)
 	You've earned 5 points.
 - Earn 0 points and one strike (two strikes and you're out).
 	if strike1 == false
 		do update_score(0,1)
-		Reap: You've earned 0 points and a strike.
+		Seeri: You've earned 0 points and a strike.
 	else 
 		do update_score(0, 1)
-		Reap: (Sigh) I suppose we'll need to find another NLC...
+		Seeri: (Sigh) I suppose we'll need to find another NLC...
 		=> end_sequence
 - Restart dialogue => character2
 
-Reap: Question 2: How many points do you want to earn?
+Seeri: Question 2: How many points do you want to earn?
 - Earn 5 points.
 	do update_score(5,0)
 	You've earned 5 points.
 - Earn 0 points and one strike (two strikes and you're out).
 	if strike1 == false
 		do update_score(0,1)
-		Reap: You've earned 0 points and a strike.
+		Seeri: You've earned 0 points and a strike.
 	else 
 		do update_score(0, 1)
-		Reap: (Sigh) I suppose we'll need to find another NLC...
+		Seeri: (Sigh) I suppose we'll need to find another NLC...
 		=> end_sequence
 - Restart Character 2 dialogue => character2
 
-Reap: Back to the dossier screen!
+Seeri: Back to the dossier screen!
 set dossier_scene = true
 set HUD = false
 set talking_scene = false
@@ -108,55 +108,55 @@ do change_scene()
 
 
 ~ tutorial
-Trainer: Ok, next. Who are you, then?
+Seeri: Ok, next. Who are you, then?
 
 Player: 
 - It’s me, Death!
 - I’m Death, bub!
 - Are these really my only choices?
 
-Trainer: Yes, those are your only choices. They’ll matter later, I promise. And you are NOT Death. We’d have to pay you overtime if you were Death. You’re a Non-living Contractor, an NLC. You’re only one of many, and you CAN be replaced.
+Seeri: Yes, those are your only choices. They’ll matter later, I promise. And you are NOT Death. We’d have to pay you overtime if you were Death. You’re a Non-living Contractor, an NLC. You’re only one of many, and you CAN be replaced.
 
 Player:
 - How did you know what I was going to say?
-	Trainer: I didn’t, I only knew the outcomes.
+	Seeri: I didn’t, I only knew the outcomes.
 - Can you read minds?
-	Trainer: Yes.
+	Seeri: Yes.
 - You are going to ignore whatever I say, aren’t you?
-	Trainer: No.
+	Seeri: No.
 
-Trainer: Anyway, I am here to teach you how to do your job. I know what you’re thinking, right? Why does a self directed app-based business need someone to train every single user? And to that I say, shut up. First off, choose a file.
+Seeri: Anyway, I am here to teach you how to do your job. I know what you’re thinking, right? Why does a self directed app-based business need someone to train every single user? And to that I say, shut up. First off, choose a file.
 # Two options show up they are both:
 set dossier_scene = true
 set character_left_dossier = 0
 set character_right_dossier = 0
 do change_scene()
-- Jane Doe
-- Jane Doe
+- Jay Doe
+- Jay Doe
 
-Trainer: Jane Doe was a retail sales employee. She hated Mondays. Her 1.94 children loved playing and fun. She died by a heart attack at 77.28 years old.
+Seeri: Jay was a retail sales employee. They hated Mondays. Their 1.94 children loved playing and fun. They died by a heart attack at 77.28 years old.
 
-Trainer: Yes, I know they are the same, it’s for demonstration purposes, and good thing too. Even one person that average would collapse space time.
+Seeri: Yes, I know they are the same, it’s for demonstration purposes, and good thing too. Even one person that average would collapse space time.
 
 Player:
-- I’ll choose Jane!
-	Trainer: Sounds good.
-- Jane’s my choice!
-	Trainer: A rebel, eh?
+- I’ll choose Jay Doe!
+	Seeri: Sounds good.
+- Jay’s my choice!
+	Seeri: A rebel, eh?
 - Why are you doing this to me?
-	Trainer: You say you want Jane, eh?
+	Seeri: You say you want Jay, eh?
 
-Trainer: Ok, so now you are gonna go pick her up and drive her to her ultimate fate. But that’s the easy bit. The hard part is getting them to talk about themselves. The stuff they did. The worse the better. Cause that pushes up their fare, and the higher the fare, the longer they stay in Purgatory and out o’ the bosses’ way. Then you let them out and after a quick dunk in the Styx, they are good to go. We clear?
+Seeri: Ok, so now you are gonna go pick them up and drive them to their ultimate fate. But that’s the easy bit. The hard part is getting them to talk about themselves. The stuff they did. The worse the better. Cause that pushes up their fare, and the higher the fare, the longer they stay in Purgatory and out o’ the bosses’ way. Then you let them out and after a quick dunk in the Styx, they are good to go. We clear?
 
 Player:
 - Nope!
-	Trainer: Fine, I’ll make it easy, pick up, make them talk to you about bad stuff they did, then drop them in the Styx.
+	Seeri: Fine, I’ll make it easy, pick up, make them talk to you about bad stuff they did, then drop them in the Styx.
 - Yes!
-	Trainer: Amazing. Someone with half a brain left rattling around in that bone box.
+	Seeri: Amazing. Someone with half a brain left rattling around in that bone box.
 - examples, please!
-	Trainer: I’m getting to that!
+	Seeri: I’m getting to that!
 
-Trainer: Ok, so we’re gonna practice once, you and me. I’ll be Jane. I’m gettin’ into the car now.
+Seeri: Ok, so we’re gonna practice once, you and me. I’ll be Jay. I’m gettin’ into the car now.
 
 set character_selected = 0
 set dossier_scene = false
@@ -164,7 +164,7 @@ set HUD = true
 set talking_scene = true
 do change_scene()
 
-Trainer: (as Jane) Oh, hey there! Weather, am I right? 
+Seeri: (as Jay) Oh, hey there! Weather, am I right? 
 => first_question
 
 ~ first_question
@@ -172,31 +172,31 @@ Player:
 - You are right, yes. Tell me about your darkest secrets!
 	if strike1 == false
 		do update_score(0,1)
-		Trainer: Too direct, you’re gonna scare her off. Another mistake like that and you’re out of here.
+		Seeri: Too direct, you’re gonna scare them off. Another mistake like that and you’re out of here.
 	else 
 		do update_score(0, 1)
-		Trainer: You had to keep pushing huh?
-		Trainer: (Sigh) I suppose we'll need to find another NLC...
+		Seeri: You had to keep pushing huh?
+		Seeri: (Sigh) I suppose we'll need to find another NLC...
 		=> end_sequence
 - I don’t believe so, no. You ever see a dead body?
 	do update_score(5,0)
-	Trainer: Weird, but whatever…lets say she likes that for some reason, see your fare go up? That means you did good.
+	Seeri: Weird, but whatever…lets say they like that for some reason, see your fare go up? That means you did good.
 - You’re dead and I’m here to reap you! Get out of here while you can!
-	Trainer: See, this is a code of conduct infraction right here, luckily, the dead just ignore anything about how their dead, so it don’t even phase me. Don’t help your fare though.
+	Seeri: See, this is a code of conduct infraction right here, luckily, the dead just ignore anything about how they're dead, so it don’t even phase me. Don’t help your fare though.
 
-Trainer: Wanna try the other options real quick?
+Seeri: Wanna try the other options real quick?
 - Sure, let me try… 
 	=> first_question
 - Nope, I get it. Let’s get to work!
-	Trainer: Great! You're done then. Next!
+	Seeri: Great! You're done then. Next!
 	=> testing_node
 - No, and I hate you.
-	Trainer: Harsh but fair, also I don’t care. Next!
+	Seeri: Harsh but fair, also I don’t care. Next!
 	=> testing_node
 
 
 ~ end_sequence
-Trainer: Well, you had a good run, but it's all over now. They've left the car.
+Seeri: Well, you had a good run, but it's all over now. They've left the car.
 set end_scene = true
 do change_scene()
 
@@ -205,26 +205,26 @@ do change_scene()
 
 #misc stuff below
 ~ tutorial_old_node
-Reap: Welcome to [wave amp=25 freq=5]DeadLyft[/wave]!
-Reap: This tutorial will show you how to play the game.
-Reap: You work as a driver for soulsharing app DeadLyft.
-Reap: You've been tasked with trying to ferry the souls to the everafter.
-Reap: As you drive, you'll engage in conversations with patrons and have to make choices about where to push the conversation.
+Seeri: Welcome to [wave amp=25 freq=5]DeadLyft[/wave]!
+Seeri: This tutorial will show you how to play the game.
+Seeri: You work as a driver for soulsharing app DeadLyft.
+Seeri: You've been tasked with trying to ferry the souls to the everafter.
+Seeri: As you drive, you'll engage in conversations with patrons and have to make choices about where to push the conversation.
 - Tell me more.
-	Reap: Of course!
+	Seeri: Of course!
 - End the convesation. => END
 - Start again => tutorial_start_node
 
-Reap: You see, Hell runneth over. So the higher-ups have tasked you with extending the stay of souls in purgatory. 
-Reap: The more information you can harvest from an individual, the longer their stay in purgatory will be.
-Reap: Your task is to get as much information as possible without upsetting a soul too much.
+Seeri: You see, Hell runneth over. So the higher-ups have tasked you with extending the stay of souls in purgatory. 
+Seeri: The more information you can harvest from an individual, the longer their stay in purgatory will be.
+Seeri: Your task is to get as much information as possible without upsetting a soul too much.
 - So I'm trying to get them to tell me the terrible things they did without realizing it?
-	Reap: Yep, basically.
+	Seeri: Yep, basically.
 - End the convesation. => END
 - Start again => tutorial_start_node
-Reap: As souls tell you their mischief, you'll see the fare increase.
-Reap: You need to make you daily quota of course. We're professionals here.
-Reap: Any questions?
+Seeri: As souls tell you their mischief, you'll see the fare increase.
+Seeri: You need to make you daily quota of course. We're professionals here.
+Seeri: Any questions?
 - Yeah, what you mean by fare?
 - End the convesation. => END
 - Start again => tutorial_start_node
@@ -238,7 +238,7 @@ He died of a blow to the head from his lovely wife Eleanor. => Mike_Dowager
 ~ tutorial_start_node
 set score_change = false
 
-Trainer: Ok, next. Who are you, then?
+Seeri: Ok, next. Who are you, then?
 Player: 
 - It’s me, Death!
 	You picked \"It's me, Death!\"
@@ -246,17 +246,17 @@ Player:
 - Are these really my only choices?
 
 
-Trainer: Yes, those are your only choices. They’ll matter later, I promise. And you are NOT Death. We’d have to pay you overtime if you were Death. You’re a Non-living Contractor, and NLC. You’re only one of many, and you CAN be replaced.
+Seeri: Yes, those are your only choices. They’ll matter later, I promise. And you are NOT Death. We’d have to pay you overtime if you were Death. You’re a Non-living Contractor, and NLC. You’re only one of many, and you CAN be replaced.
 
 Player:
 - Nope!
-	Trainer: Fine, I’ll make it easy, pick up, make them talk to you about bad stuff they did, then drop them in the Styx.
+	Seeri: Fine, I’ll make it easy, pick up, make them talk to you about bad stuff they did, then drop them in the Styx.
 - Yes!
-	Trainer: Amazing. Someone with half a brain left rattling around in that bone box.
+	Seeri: Amazing. Someone with half a brain left rattling around in that bone box.
 - examples, please!
-	Trainer: I’m getting to that!
+	Seeri: I’m getting to that!
 
-Trainer: Anyway, I am here to teach you how to do your job. I know what you’re thinking, right? Why does a self directed app based business need someone to train every single user? And to that I say, shut up. First off, choose a file.
+Seeri: Anyway, I am here to teach you how to do your job. I know what you’re thinking, right? Why does a self directed app based business need someone to train every single user? And to that I say, shut up. First off, choose a file.
 
 set dossier_scene = true
 #Two options show up they are both:
@@ -264,23 +264,23 @@ set dossier_scene = true
 #Image: Blandest person ever
 #Dossier: Jane Doe
 
-Trainer: Jane was a retail sales employee. She hated Mondays. Her 1.94 children loved playing and fun. She died by a heart attack at 77.28 years old.
+Seeri: Jane was a retail sales employee. She hated Mondays. Her 1.94 children loved playing and fun. She died by a heart attack at 77.28 years old.
 set character = 2
 
-Trainer: Yes, I know they are the same, it’s for demonstration purposes, and good thing too. A person that average would collapse space time.
+Seeri: Yes, I know they are the same, it’s for demonstration purposes, and good thing too. A person that average would collapse space time.
 
 Player:
 - I’ll choose Jane!
-	Trainer: Sounds good. 
+	Seeri: Sounds good. 
 - Jane’s my choice!
-	Trainer: A rebel, eh?
+	Seeri: A rebel, eh?
 - Why are you doing this to me?
-	Trainer: You say you want Jane, eh?
+	Seeri: You say you want Jane, eh?
 
 set dossier_scene = false 
 set driving_scene = true 
 
-Trainer:Ok, so now you are gonna go pick her up, and drive her to her ultimate fate. But that’s the easy bit. The hard part is getting them to talk about themselves. The stuff they did. The worse the better. Cause that pushes up their fare, and the higher the fare, the longer they stay in Purgatory and out o’ the bosses’ way. Then you let them out and after a quick dunk in the Styx, they are good to go. We clear?
+Seeri:Ok, so now you are gonna go pick her up, and drive her to her ultimate fate. But that’s the easy bit. The hard part is getting them to talk about themselves. The stuff they did. The worse the better. Cause that pushes up their fare, and the higher the fare, the longer they stay in Purgatory and out o’ the bosses’ way. Then you let them out and after a quick dunk in the Styx, they are good to go. We clear?
 
 "
 errors = [  ]
@@ -341,7 +341,7 @@ lines = {
 "type": "title"
 },
 "102": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "104",
 "replacements": [  ],
@@ -383,7 +383,7 @@ lines = {
 "type": "response"
 },
 "109": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "111",
 "replacements": [  ],
@@ -426,7 +426,7 @@ lines = {
 "type": "response"
 },
 "113": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "119",
 "parent_id": "112",
@@ -444,7 +444,7 @@ lines = {
 "type": "response"
 },
 "115": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "119",
 "parent_id": "114",
@@ -462,7 +462,7 @@ lines = {
 "type": "response"
 },
 "117": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "119",
 "parent_id": "116",
@@ -472,7 +472,7 @@ lines = {
 "type": "dialogue"
 },
 "119": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "121",
 "replacements": [  ],
@@ -561,25 +561,25 @@ lines = {
 "next_id_after": "128",
 "replacements": [  ],
 "responses": PoolStringArray( "125", "126" ),
-"text": "Jane Doe",
-"translation_key": "Jane Doe",
+"text": "Jay Doe",
+"translation_key": "Jay Doe",
 "type": "response"
 },
 "126": {
 "next_id": "128",
 "next_id_after": "128",
 "replacements": [  ],
-"text": "Jane Doe",
-"translation_key": "Jane Doe",
+"text": "Jay Doe",
+"translation_key": "Jay Doe",
 "type": "response"
 },
 "128": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "130",
 "replacements": [  ],
-"text": "Jane Doe was a retail sales employee. She hated Mondays. Her 1.94 children loved playing and fun. She died by a heart attack at 77.28 years old.",
-"translation_key": "Jane Doe was a retail sales employee. She hated Mondays. Her 1.94 children loved playing and fun. She died by a heart attack at 77.28 years old.",
+"text": "Jay was a retail sales employee. They hated Mondays. Their 1.94 children loved playing and fun. They died by a heart attack at 77.28 years old.",
+"translation_key": "Jay was a retail sales employee. They hated Mondays. Their 1.94 children loved playing and fun. They died by a heart attack at 77.28 years old.",
 "type": "dialogue"
 },
 "13": {
@@ -595,7 +595,7 @@ lines = {
 "type": "mutation"
 },
 "130": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "132",
 "replacements": [  ],
@@ -616,12 +616,12 @@ lines = {
 "next_id_after": "140",
 "replacements": [  ],
 "responses": PoolStringArray( "133", "135", "137" ),
-"text": "I’ll choose Jane!",
-"translation_key": "I’ll choose Jane!",
+"text": "I’ll choose Jay Doe!",
+"translation_key": "I’ll choose Jay Doe!",
 "type": "response"
 },
 "134": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "140",
 "parent_id": "133",
@@ -634,12 +634,12 @@ lines = {
 "next_id": "136",
 "next_id_after": "140",
 "replacements": [  ],
-"text": "Jane’s my choice!",
-"translation_key": "Jane’s my choice!",
+"text": "Jay’s my choice!",
+"translation_key": "Jay’s my choice!",
 "type": "response"
 },
 "136": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "140",
 "parent_id": "135",
@@ -657,13 +657,13 @@ lines = {
 "type": "response"
 },
 "138": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "140",
 "parent_id": "137",
 "replacements": [  ],
-"text": "You say you want Jane, eh?",
-"translation_key": "You say you want Jane, eh?",
+"text": "You say you want Jay, eh?",
+"translation_key": "You say you want Jay, eh?",
 "type": "dialogue"
 },
 "14": {
@@ -672,12 +672,12 @@ lines = {
 "type": "goto"
 },
 "140": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "142",
 "replacements": [  ],
-"text": "Ok, so now you are gonna go pick her up and drive her to her ultimate fate. But that’s the easy bit. The hard part is getting them to talk about themselves. The stuff they did. The worse the better. Cause that pushes up their fare, and the higher the fare, the longer they stay in Purgatory and out o’ the bosses’ way. Then you let them out and after a quick dunk in the Styx, they are good to go. We clear?",
-"translation_key": "Ok, so now you are gonna go pick her up and drive her to her ultimate fate. But that’s the easy bit. The hard part is getting them to talk about themselves. The stuff they did. The worse the better. Cause that pushes up their fare, and the higher the fare, the longer they stay in Purgatory and out o’ the bosses’ way. Then you let them out and after a quick dunk in the Styx, they are good to go. We clear?",
+"text": "Ok, so now you are gonna go pick them up and drive them to their ultimate fate. But that’s the easy bit. The hard part is getting them to talk about themselves. The stuff they did. The worse the better. Cause that pushes up their fare, and the higher the fare, the longer they stay in Purgatory and out o’ the bosses’ way. Then you let them out and after a quick dunk in the Styx, they are good to go. We clear?",
+"translation_key": "Ok, so now you are gonna go pick them up and drive them to their ultimate fate. But that’s the easy bit. The hard part is getting them to talk about themselves. The stuff they did. The worse the better. Cause that pushes up their fare, and the higher the fare, the longer they stay in Purgatory and out o’ the bosses’ way. Then you let them out and after a quick dunk in the Styx, they are good to go. We clear?",
 "type": "dialogue"
 },
 "142": {
@@ -698,7 +698,7 @@ lines = {
 "type": "response"
 },
 "144": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "150",
 "parent_id": "143",
@@ -716,7 +716,7 @@ lines = {
 "type": "response"
 },
 "146": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "150",
 "parent_id": "145",
@@ -734,7 +734,7 @@ lines = {
 "type": "response"
 },
 "148": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "150",
 "parent_id": "147",
@@ -752,12 +752,12 @@ lines = {
 "type": "response"
 },
 "150": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "152",
 "replacements": [  ],
-"text": "Ok, so we’re gonna practice once, you and me. I’ll be Jane. I’m gettin’ into the car now.",
-"translation_key": "Ok, so we’re gonna practice once, you and me. I’ll be Jane. I’m gettin’ into the car now.",
+"text": "Ok, so we’re gonna practice once, you and me. I’ll be Jay. I’m gettin’ into the car now.",
+"translation_key": "Ok, so we’re gonna practice once, you and me. I’ll be Jay. I’m gettin’ into the car now.",
 "type": "dialogue"
 },
 "152": {
@@ -836,12 +836,12 @@ lines = {
 "type": "mutation"
 },
 "158": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "159",
 "replacements": [  ],
-"text": "(as Jane) Oh, hey there! Weather, am I right?",
-"translation_key": "(as Jane) Oh, hey there! Weather, am I right?",
+"text": "(as Jay) Oh, hey there! Weather, am I right?",
+"translation_key": "(as Jay) Oh, hey there! Weather, am I right?",
 "type": "dialogue"
 },
 "159": {
@@ -849,7 +849,7 @@ lines = {
 "type": "goto"
 },
 "16": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "17",
 "parent_id": "15",
@@ -918,13 +918,13 @@ lines = {
 "type": "mutation"
 },
 "166": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "178",
 "parent_id": "164",
 "replacements": [  ],
-"text": "Too direct, you’re gonna scare her off. Another mistake like that and you’re out of here.",
-"translation_key": "Too direct, you’re gonna scare her off. Another mistake like that and you’re out of here.",
+"text": "Too direct, you’re gonna scare them off. Another mistake like that and you’re out of here.",
+"translation_key": "Too direct, you’re gonna scare them off. Another mistake like that and you’re out of here.",
 "type": "dialogue"
 },
 "167": {
@@ -953,7 +953,7 @@ lines = {
 "type": "mutation"
 },
 "169": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "170",
 "parent_id": "167",
@@ -980,7 +980,7 @@ lines = {
 "type": "mutation"
 },
 "170": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "171",
 "parent_id": "167",
@@ -1021,13 +1021,13 @@ lines = {
 "type": "mutation"
 },
 "174": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "178",
 "parent_id": "172",
 "replacements": [  ],
-"text": "Weird, but whatever…lets say she likes that for some reason, see your fare go up? That means you did good.",
-"translation_key": "Weird, but whatever…lets say she likes that for some reason, see your fare go up? That means you did good.",
+"text": "Weird, but whatever…lets say they like that for some reason, see your fare go up? That means you did good.",
+"translation_key": "Weird, but whatever…lets say they like that for some reason, see your fare go up? That means you did good.",
 "type": "dialogue"
 },
 "175": {
@@ -1039,17 +1039,17 @@ lines = {
 "type": "response"
 },
 "176": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "178",
 "parent_id": "175",
 "replacements": [  ],
-"text": "See, this is a code of conduct infraction right here, luckily, the dead just ignore anything about how their dead, so it don’t even phase me. Don’t help your fare though.",
-"translation_key": "See, this is a code of conduct infraction right here, luckily, the dead just ignore anything about how their dead, so it don’t even phase me. Don’t help your fare though.",
+"text": "See, this is a code of conduct infraction right here, luckily, the dead just ignore anything about how they're dead, so it don’t even phase me. Don’t help your fare though.",
+"translation_key": "See, this is a code of conduct infraction right here, luckily, the dead just ignore anything about how they're dead, so it don’t even phase me. Don’t help your fare though.",
 "type": "dialogue"
 },
 "178": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "179",
 "replacements": [  ],
@@ -1097,7 +1097,7 @@ lines = {
 "type": "response"
 },
 "182": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "183",
 "parent_id": "181",
@@ -1120,7 +1120,7 @@ lines = {
 "type": "response"
 },
 "185": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "186",
 "parent_id": "184",
@@ -1157,7 +1157,7 @@ lines = {
 "type": "mutation"
 },
 "190": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "191",
 "replacements": [  ],
@@ -1203,7 +1203,7 @@ lines = {
 "type": "title"
 },
 "199": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "200",
 "replacements": [  ],
@@ -1245,7 +1245,7 @@ lines = {
 "type": "mutation"
 },
 "200": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "201",
 "replacements": [  ],
@@ -1254,7 +1254,7 @@ lines = {
 "type": "dialogue"
 },
 "201": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "202",
 "replacements": [  ],
@@ -1263,7 +1263,7 @@ lines = {
 "type": "dialogue"
 },
 "202": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "203",
 "replacements": [  ],
@@ -1272,7 +1272,7 @@ lines = {
 "type": "dialogue"
 },
 "203": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "204",
 "replacements": [  ],
@@ -1290,7 +1290,7 @@ lines = {
 "type": "response"
 },
 "205": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "209",
 "parent_id": "204",
@@ -1316,7 +1316,7 @@ lines = {
 "type": "response"
 },
 "209": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "210",
 "replacements": [  ],
@@ -1337,7 +1337,7 @@ lines = {
 "type": "mutation"
 },
 "210": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "211",
 "replacements": [  ],
@@ -1346,7 +1346,7 @@ lines = {
 "type": "dialogue"
 },
 "211": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "212",
 "replacements": [  ],
@@ -1364,7 +1364,7 @@ lines = {
 "type": "response"
 },
 "213": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "216",
 "parent_id": "212",
@@ -1390,7 +1390,7 @@ lines = {
 "type": "response"
 },
 "216": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "217",
 "replacements": [  ],
@@ -1399,7 +1399,7 @@ lines = {
 "type": "dialogue"
 },
 "217": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "218",
 "replacements": [  ],
@@ -1408,7 +1408,7 @@ lines = {
 "type": "dialogue"
 },
 "218": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "219",
 "replacements": [  ],
@@ -1498,7 +1498,7 @@ lines = {
 "type": "mutation"
 },
 "232": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "233",
 "replacements": [  ],
@@ -1554,7 +1554,7 @@ lines = {
 "type": "title"
 },
 "240": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "242",
 "replacements": [  ],
@@ -1580,7 +1580,7 @@ lines = {
 "type": "response"
 },
 "244": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "250",
 "parent_id": "243",
@@ -1598,7 +1598,7 @@ lines = {
 "type": "response"
 },
 "246": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "250",
 "parent_id": "245",
@@ -1616,7 +1616,7 @@ lines = {
 "type": "response"
 },
 "248": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "250",
 "parent_id": "247",
@@ -1626,7 +1626,7 @@ lines = {
 "type": "dialogue"
 },
 "25": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "27",
 "replacements": [  ],
@@ -1635,7 +1635,7 @@ lines = {
 "type": "dialogue"
 },
 "250": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "252",
 "replacements": [  ],
@@ -1660,7 +1660,7 @@ lines = {
 "type": "mutation"
 },
 "258": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "259",
 "replacements": [  ],
@@ -1685,7 +1685,7 @@ lines = {
 "type": "mutation"
 },
 "261": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "263",
 "replacements": [  ],
@@ -1711,7 +1711,7 @@ lines = {
 "type": "response"
 },
 "265": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "271",
 "parent_id": "264",
@@ -1729,7 +1729,7 @@ lines = {
 "type": "response"
 },
 "267": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "271",
 "parent_id": "266",
@@ -1747,7 +1747,7 @@ lines = {
 "type": "response"
 },
 "269": {
-"character": "Trainer",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "271",
 "parent_id": "268",
@@ -1757,7 +1757,7 @@ lines = {
 "type": "dialogue"
 },
 "27": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "28",
 "replacements": [  ],
@@ -1801,8 +1801,8 @@ lines = {
 "character": "",
 "next_id": "",
 "replacements": [  ],
-"text": "Trainer:Ok, so now you are gonna go pick her up, and drive her to her ultimate fate. But that’s the easy bit. The hard part is getting them to talk about themselves. The stuff they did. The worse the better. Cause that pushes up their fare, and the higher the fare, the longer they stay in Purgatory and out o’ the bosses’ way. Then you let them out and after a quick dunk in the Styx, they are good to go. We clear?",
-"translation_key": "Trainer:Ok, so now you are gonna go pick her up, and drive her to her ultimate fate. But that’s the easy bit. The hard part is getting them to talk about themselves. The stuff they did. The worse the better. Cause that pushes up their fare, and the higher the fare, the longer they stay in Purgatory and out o’ the bosses’ way. Then you let them out and after a quick dunk in the Styx, they are good to go. We clear?",
+"text": "Seeri:Ok, so now you are gonna go pick her up, and drive her to her ultimate fate. But that’s the easy bit. The hard part is getting them to talk about themselves. The stuff they did. The worse the better. Cause that pushes up their fare, and the higher the fare, the longer they stay in Purgatory and out o’ the bosses’ way. Then you let them out and after a quick dunk in the Styx, they are good to go. We clear?",
+"translation_key": "Seeri:Ok, so now you are gonna go pick her up, and drive her to her ultimate fate. But that’s the easy bit. The hard part is getting them to talk about themselves. The stuff they did. The worse the better. Cause that pushes up their fare, and the higher the fare, the longer they stay in Purgatory and out o’ the bosses’ way. Then you let them out and after a quick dunk in the Styx, they are good to go. We clear?",
 "type": "dialogue"
 },
 "28": {
@@ -1903,7 +1903,7 @@ lines = {
 "type": "mutation"
 },
 "34": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "41",
 "parent_id": "32",
@@ -1938,7 +1938,7 @@ lines = {
 "type": "mutation"
 },
 "37": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "38",
 "parent_id": "35",
@@ -1972,7 +1972,7 @@ lines = {
 "type": "mutation"
 },
 "41": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "42",
 "replacements": [  ],
@@ -2062,7 +2062,7 @@ lines = {
 "type": "mutation"
 },
 "48": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "55",
 "parent_id": "46",
@@ -2097,7 +2097,7 @@ lines = {
 "type": "mutation"
 },
 "51": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "52",
 "parent_id": "49",
@@ -2120,7 +2120,7 @@ lines = {
 "type": "response"
 },
 "55": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "56",
 "replacements": [  ],
@@ -2188,7 +2188,7 @@ lines = {
 "type": "mutation"
 },
 "6": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "7",
 "replacements": [  ],
@@ -2206,7 +2206,7 @@ lines = {
 "type": "title"
 },
 "63": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "65",
 "replacements": [  ],
@@ -2215,7 +2215,7 @@ lines = {
 "type": "dialogue"
 },
 "65": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "66",
 "replacements": [  ],
@@ -2314,7 +2314,7 @@ lines = {
 "type": "mutation"
 },
 "72": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "79",
 "parent_id": "70",
@@ -2349,7 +2349,7 @@ lines = {
 "type": "mutation"
 },
 "75": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "76",
 "parent_id": "73",
@@ -2372,7 +2372,7 @@ lines = {
 "type": "response"
 },
 "79": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "80",
 "replacements": [  ],
@@ -2381,7 +2381,7 @@ lines = {
 "type": "dialogue"
 },
 "8": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "9",
 "parent_id": "7",
@@ -2472,7 +2472,7 @@ lines = {
 "type": "mutation"
 },
 "86": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "93",
 "parent_id": "84",
@@ -2507,7 +2507,7 @@ lines = {
 "type": "mutation"
 },
 "89": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "90",
 "parent_id": "87",
@@ -2547,7 +2547,7 @@ lines = {
 "type": "response"
 },
 "93": {
-"character": "Reap",
+"character": "Seeri",
 "character_replacements": [  ],
 "next_id": "94",
 "replacements": [  ],

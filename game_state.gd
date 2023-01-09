@@ -3,8 +3,8 @@ extends Node
 var has_met_player: bool = false
 
 #Strike Variables
-var strike1 = false
-var strike2 = false
+var strike1: int
+var strike2: int
 
 
 var left_image_name: String 
@@ -23,9 +23,40 @@ var character_left_dossier: int
 var character_right_dossier: int
 
 var score: int
-var score_change: bool
-var score_change_amount: int
+var difficulty: int
+var end_car_color: int
 
+#Character variables
+var generic: int = 0
+var mike: int = 1
+var guy: int = 2
+var cecilia: int = 3
+var junie: int = 4
+var narrator: int = 9
+
+#Mike Dialogue Variable
+
+var altright_mike: int 
+var angryalt_mike: int 
+var altright2_mike: int 
+
+var familyman_mike: int
+var angryfamily_mike: int 
+
+var community_mike: int 
+var community2_mike: int 
+var ithoughtallmortals: int
+var wouldyourpetty: int
+
+var angrycommunity_mike: int 
+var daughtercomplain: int
+var whydontvisit: int 
+var whataboutwife: int
+
+var altrightpath: int
+var familypath: int
+var communitypath: int
+var firstchoice: int
 
 #comment
 
