@@ -6,6 +6,11 @@ var has_met_player: bool = false
 var strike1: int
 var strike2: int
 
+#tutorial vars
+var question1: int
+var question2: int
+var question3: int
+var questionsasked: int
 
 var left_image_name: String 
 var right_image_name: String

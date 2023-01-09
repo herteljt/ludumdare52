@@ -92,6 +92,13 @@ func update_score(score_change, strike):
 		$HUD/Strike2.visible = false
 		scene_vars.score = 0
 		$HUD.update_score(scene_vars.score)
+		print("Strikes and score reset")
+
+	if strike == -2: #only reset strikes
+		scene_vars.strike1 = 0
+		scene_vars.strike2 = 0
+		$HUD/Strike1.visible = false
+		$HUD/Strike2.visible = false
 		print("Strikes reset")
 
 	if strike == 1 and scene_vars.strike1 == 1:
@@ -108,16 +115,7 @@ func update_score(score_change, strike):
 #Function to keep track of dialogue paths
 func update_paths():
 	print("FirstChoice Value Start:"+str(scene_vars.firstchoice))
-#	if altright == 1:
-#		print("Altright Path Locked")
-#		scene_vars.altrightpath = 1
-#	if family == 1:
-#		scene_vars.familypath = 1
-#		print("Family Path Locked")
-#	if community == 1:
-#		scene_vars.communitypath = 1
-#		print("Community Path Locked")
-#
+	
 	if scene_vars.altrightpath == 1 and scene_vars.familypath == 1 and scene_vars.communitypath == 1:
 		scene_vars.firstchoice = 1
 		print("First Choice Locked")
@@ -125,6 +123,17 @@ func update_paths():
 		scene_vars.firstchoice = 0
 		print("First Choice Open")
 		print("FirstChoice Value End:"+str(scene_vars.firstchoice))
+
+func update_tutorial():
+	print("Questions Asked Value Start:"+str(scene_vars.questionsasked))
+	
+	if scene_vars.question1 == 1 and scene_vars.question2 == 1 and scene_vars.question3 == 1:
+		scene_vars.questionsasked = 1
+		print("Tutorial Locked")
+	else:
+		scene_vars.questionsasked = 0
+		print("Tutorial OPen")
+		print("FirstChoice Value End:"+str(scene_vars.questionsasked))
 
 
 
@@ -181,10 +190,7 @@ func _process(delta):
 		print("Start Value: "+str(start))
 		print("Tutorial Value: "+str(tutorial))
 		
-	if Input.is_action_just_pressed("ui_scenedebug"):
-		scenedebug = not scenedebug
-		print("Scene Debug "+str(scenedebug))
-	
+
 	if Input.is_action_just_pressed("ui_start"):
 		start = 1
 		print("Start Value: "+str(start))
@@ -225,10 +231,15 @@ func _process(delta):
 		$EndScene.visible = true
 		change_scene()
 
-	if Input.is_action_just_pressed("ui_debug"):
-		debug = not debug
-		print("Debug value: "+str(debug))
-		
+#Debug Keys
+#	if Input.is_action_just_pressed("ui_debug"):
+#		debug = not debug
+#		print("Debug value: "+str(debug))
+#
+#	if Input.is_action_just_pressed("ui_scenedebug"):
+#		scenedebug = not scenedebug
+#		print("Scene Debug "+str(scenedebug))
+#
 	if Input.is_action_just_pressed("ui_one"):
 		if debug == 1 and scenedebug == 0:
 	#		print("One pressed")
