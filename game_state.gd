@@ -1,6 +1,6 @@
 extends Node
 
-var has_met_player: bool = false
+var tutorial: int
 
 #Strike Variables
 var strike1: int

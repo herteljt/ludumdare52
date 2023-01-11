@@ -77,6 +77,7 @@ func _ready():
 	scene_vars.familypath = 0
 	scene_vars.communitypath = 0
 	scene_vars.firstchoice = 0
+	
 
 	$TitleMusic.play()
 	
@@ -141,6 +142,12 @@ func change_scene():
 	if scene_vars.title_scene == true:
 #		print("Title Scene Enabled")
 		$TitleScene.visible = true
+		$TalkingScene.visible = false
+		$DrivingScene.visible = false
+		$HUD.visible = false
+		$DossierScene.visible = false
+		$EndScene.visible = false
+		$TitleMusic.play()
 	if scene_vars.driving_scene == true:
 #		print("Driving Scene Enabled")
 		$DrivingScene.visible = true
@@ -185,37 +192,49 @@ func change_scene():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("ui_tutorial"):
-		tutorial = 1
-		start = 1
-		print("Start Value: "+str(start))
-		print("Tutorial Value: "+str(tutorial))
+		if tutorial == 1:
+			tutorial = 3
+		if start == 0:
+			tutorial = 1
+		if start == 1:
+			tutorial = 0
+	print("Tutorial Value: "+str(tutorial))
 		
 
 	if Input.is_action_just_pressed("ui_start"):
-		start = 1
-		print("Start Value: "+str(start))
-		$TitleMusic.stop()
+		if start == 1:
+			start = 3
+		if tutorial == 1:
+			start = 0
+		if tutorial == 0:
+			start = 1
+	print("Start Value: "+str(start))
 
-	if start == 1 and tutorial == 1:
-		var dialogue_balloon = load("res://assets/dialogue/dialogue_one.tres")
+	if start == 0 and tutorial == 1:
+		var dialogue_balloon = load("res://assets/dialogue/dialogue_one_revised.tres")
 		DialogueManager.show_example_dialogue_balloon(\
 		"tutorial", \
 		dialogue_balloon)
 		start = 2
+		scene_vars.title_scene = false	
 		scene_vars.driving_scene = true	
 		$TitleMusic.stop()
 		$Music.play()
 		change_scene()
 		
 	if start == 1 and tutorial == 0:
-		var dialogue_balloon = load("res://assets/dialogue/dialogue_one.tres")
+		var dialogue_balloon = load("res://assets/dialogue/dialogue_one_revised.tres")
 		DialogueManager.show_example_dialogue_balloon(\
 		"start", \
 		dialogue_balloon)
 		start = 2
-		print("Start Value: "+str(start))
+		scene_vars.title_scene = false	
+		scene_vars.driving_scene = true	
 		$TitleMusic.stop()
 		$Music.play()
+		change_scene()
+		print("Start Value: "+str(start))
+		
 
 
 #	if start == 1:
@@ -239,14 +258,15 @@ func _process(delta):
 #	if Input.is_action_just_pressed("ui_scenedebug"):
 #		scenedebug = not scenedebug
 #		print("Scene Debug "+str(scenedebug))
-#
+
+
 	if Input.is_action_just_pressed("ui_one"):
 		if debug == 1 and scenedebug == 0:
 	#		print("One pressed")
 			$TitleScene.visible = not $TitleScene.visible
 			scene_vars.title_scene = not scene_vars.title_scene
 		if debug == 0 and scenedebug == 1:
-			var dialogue_balloon = load("res://assets/dialogue/dialogue_one.tres")
+			var dialogue_balloon = load("res://assets/dialogue/dialogue_one_revised.tres")
 			DialogueManager.show_example_dialogue_balloon(\
 			"Firstchoice_Mike", \
 			dialogue_balloon)
@@ -263,7 +283,7 @@ func _process(delta):
 			$TitleScene.visible = not $TitleScene.visible
 			scene_vars.title_scene = not scene_vars.title_scene
 		if debug == 0 and scenedebug == 1:
-			var dialogue_balloon = load("res://assets/dialogue/dialogue_one.tres")
+			var dialogue_balloon = load("res://assets/dialogue/dialogue_one_revised.tres")
 			DialogueManager.show_example_dialogue_balloon(\
 			"Altright_Mike", \
 			dialogue_balloon)
@@ -279,7 +299,7 @@ func _process(delta):
 			$TalkingScene.visible = not $TalkingScene.visible
 			scene_vars.talking_scene = not scene_vars.talking_scene
 		if debug == 0 and scenedebug == 1:
-			var dialogue_balloon = load("res://assets/dialogue/dialogue_one.tres")
+			var dialogue_balloon = load("res://assets/dialogue/dialogue_one_revised.tres")
 			DialogueManager.show_example_dialogue_balloon(\
 			"Familyman_Mike", \
 			dialogue_balloon)
@@ -296,7 +316,7 @@ func _process(delta):
 			$DossierScene.visible = not $DossierScene.visible
 			scene_vars.dossier_scene = not scene_vars.dossier_scene
 		if debug == 0 and scenedebug == 1:
-			var dialogue_balloon = load("res://assets/dialogue/dialogue_one.tres")
+			var dialogue_balloon = load("res://assets/dialogue/dialogue_one_revised.tres")
 			DialogueManager.show_example_dialogue_balloon(\
 			"Community_Mike", \
 			dialogue_balloon)
